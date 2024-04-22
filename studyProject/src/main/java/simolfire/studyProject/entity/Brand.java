@@ -26,18 +26,9 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "login_id")
-    @Index(name = "idx_login_id")
-    private String loginId;
-
-    private String password;
-
     @Column(name = "name")
     private String name;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
 
-    private String email;
 
 }
