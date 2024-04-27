@@ -12,12 +12,12 @@
     </insert>
 
 
-    <!-- 멤버 하나 조회  -->
-<!--    <select id="getMember" parameterType="int" resultType="MemberEntity">-->
-<!--        select *-->
-<!--        from member-->
-<!--        where seq = #{seq}-->
-<!--    </select>-->
+    <!-- 회원 상세 조회  -->
+    <select id="getMember" parameterType="int" resultType="hyewadong.yogosaza.dto.MemberGetDto">
+        select member_id, member_name, member_phone, member_address, member_create_date
+        from member
+        where member_seq = #{memberSeq}
+    </select>
 
 
 <!--    &lt;!&ndash; 멤버 전부 조회  &ndash;&gt;-->

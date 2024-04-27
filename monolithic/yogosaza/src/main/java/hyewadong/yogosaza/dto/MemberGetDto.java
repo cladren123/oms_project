@@ -1,19 +1,16 @@
-package hyewadong.yogosaza.entity;
+package hyewadong.yogosaza.dto;
 
 
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class MemberEntity {
+public class MemberGetDto {
 
-    private int memberSeq;
     private String memberId;
-    private String memberPwd;
     private String memberName;
     private String memberPhone;
     private String memberAddress;
