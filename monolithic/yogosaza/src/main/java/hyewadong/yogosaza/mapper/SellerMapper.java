@@ -4,6 +4,7 @@ package hyewadong.yogosaza.mapper;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.seller.SellerInputDto;
+import hyewadong.yogosaza.dto.seller.SellerOutputDto;
 import hyewadong.yogosaza.entity.MemberEntity;
 import hyewadong.yogosaza.entity.SellerEntity;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,10 +19,10 @@ public interface SellerMapper {
     public int registerSeller(SellerEntity sellerEntity) throws SQLException;
 
     // 판매자 상세 조회
-    public MemberOutputDto getSeller(int sellerSeq) throws SQLException;
+    public SellerOutputDto getSeller(int sellerSeq) throws SQLException;
 
     // 판매자 전부 조회
-    public List<MemberOutputDto> getSellers() throws SQLException;
+    public List<SellerOutputDto> getSellers() throws SQLException;
 
     // 판매자 정보 수정
     public int updateSeller(SellerInputDto sellerInputDto) throws SQLException;

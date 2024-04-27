@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Data
 public class SellerInputDto {
 
+    private Integer sellerSeq;
     private Integer brandSeq;
     private String sellerId;
     private String sellerPwd;

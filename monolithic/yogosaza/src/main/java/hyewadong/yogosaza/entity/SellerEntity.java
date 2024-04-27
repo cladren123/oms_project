@@ -19,4 +19,8 @@ public class SellerEntity {
     private String sellerAddress;
     private LocalDateTime sellerCreateDate;
 
+    public void makeDate() {
+        sellerCreateDate = LocalDateTime.now();
+    }
+
 }
