@@ -1,1 +1,1 @@
-# study_project
+# oms_project
