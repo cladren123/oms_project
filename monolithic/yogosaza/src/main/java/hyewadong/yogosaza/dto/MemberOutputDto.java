@@ -8,8 +8,9 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class MemberGetDto {
+public class MemberOutputDto {
 
+    private Integer MemberSeq;
     private String memberId;
     private String memberName;
     private String memberPhone;

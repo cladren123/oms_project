@@ -1,17 +1,17 @@
 package hyewadong.yogosaza.converter;
 
-import hyewadong.yogosaza.dto.MemberRegisterDto;
+import hyewadong.yogosaza.dto.MemberInputDto;
 import hyewadong.yogosaza.entity.MemberEntity;
 
 public class MemberConverter {
 
-    static public MemberEntity memberRegisterDtoToMemberEntity(MemberRegisterDto memberRegisterDto) {
+    static public MemberEntity memberRegisterDtoToMemberEntity(MemberInputDto memberInputDto) {
         return MemberEntity.builder()
-                .memberId(memberRegisterDto.getMemberId())
-                .memberPwd(memberRegisterDto.getMemberPwd())
-                .memberName(memberRegisterDto.getMemberName())
-                .memberPhone(memberRegisterDto.getMemberPhone())
-                .memberAddress(memberRegisterDto.getMemberAddress())
+                .memberId(memberInputDto.getMemberId())
+                .memberPwd(memberInputDto.getMemberPwd())
+                .memberName(memberInputDto.getMemberName())
+                .memberPhone(memberInputDto.getMemberPhone())
+                .memberAddress(memberInputDto.getMemberAddress())
                 .build();
     }
 

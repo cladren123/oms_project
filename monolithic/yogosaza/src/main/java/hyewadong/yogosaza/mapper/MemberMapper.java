@@ -1,7 +1,8 @@
 package hyewadong.yogosaza.mapper;
 
 
-import hyewadong.yogosaza.dto.MemberGetDto;
+import hyewadong.yogosaza.dto.MemberOutputDto;
+import hyewadong.yogosaza.dto.MemberInputDto;
 import hyewadong.yogosaza.entity.MemberEntity;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,16 +16,16 @@ public interface MemberMapper {
     public int registerMember(MemberEntity memberEntity) throws SQLException;
 
     // 회원 상세 조회
-    public MemberGetDto getMember(int memberSeq) throws SQLException;
+    public MemberOutputDto getMember(int memberSeq) throws SQLException;
 
     // 회원 전부 조회
-//    public List<MemberEntity> getMembers() throws SQLException;
-//
-//    // 회원 정보 수정
-//    public int updateMember(MemberEntity memberEntity) throws SQLException;
-//
-//    // 회원 삭제
-//    public int deleteMember(int memberSeq) throws SQLException;
+    public List<MemberOutputDto> getMembers() throws SQLException;
+
+    // 회원 정보 수정
+    public int updateMember(MemberInputDto memberInputDto) throws SQLException;
+
+    // 회원 삭제
+    public int deleteMember(int memberSeq) throws SQLException;
 
 
 
