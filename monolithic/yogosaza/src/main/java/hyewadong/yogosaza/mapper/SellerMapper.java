@@ -1,0 +1,32 @@
+package hyewadong.yogosaza.mapper;
+
+
+import hyewadong.yogosaza.dto.member.MemberInputDto;
+import hyewadong.yogosaza.dto.member.MemberOutputDto;
+import hyewadong.yogosaza.dto.seller.SellerInputDto;
+import hyewadong.yogosaza.entity.MemberEntity;
+import hyewadong.yogosaza.entity.SellerEntity;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.sql.SQLException;
+import java.util.List;
+
+@Mapper
+public interface SellerMapper {
+
+    // 판매자 가입
+    public int registerSeller(SellerEntity sellerEntity) throws SQLException;
+
+    // 판매자 상세 조회
+    public MemberOutputDto getSeller(int sellerSeq) throws SQLException;
+
+    // 판매자 전부 조회
+    public List<MemberOutputDto> getSellers() throws SQLException;
+
+    // 판매자 정보 수정
+    public int updateSeller(SellerInputDto sellerInputDto) throws SQLException;
+
+    // 판매자 삭제
+    public int deleteSeller(int sellerSeq) throws SQLException;
+
+}

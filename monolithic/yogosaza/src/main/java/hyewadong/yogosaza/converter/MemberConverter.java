@@ -1,6 +1,6 @@
 package hyewadong.yogosaza.converter;
 
-import hyewadong.yogosaza.dto.MemberInputDto;
+import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.entity.MemberEntity;
 
 public class MemberConverter {

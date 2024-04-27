@@ -2,8 +2,8 @@ package hyewadong.yogosaza.service;
 
 
 import hyewadong.yogosaza.converter.MemberConverter;
-import hyewadong.yogosaza.dto.MemberOutputDto;
-import hyewadong.yogosaza.dto.MemberInputDto;
+import hyewadong.yogosaza.dto.member.MemberOutputDto;
+import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.entity.MemberEntity;
 import hyewadong.yogosaza.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package hyewadong.yogosaza.dto;
+package hyewadong.yogosaza.dto.member;
 
 
 import lombok.Builder;

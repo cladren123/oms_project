@@ -1,8 +1,8 @@
 package hyewadong.yogosaza.controller;
 
 
-import hyewadong.yogosaza.dto.MemberOutputDto;
-import hyewadong.yogosaza.dto.MemberInputDto;
+import hyewadong.yogosaza.dto.member.MemberOutputDto;
+import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

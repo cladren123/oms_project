@@ -1,8 +1,8 @@
 package hyewadong.yogosaza.mapper;
 
 
-import hyewadong.yogosaza.dto.MemberOutputDto;
-import hyewadong.yogosaza.dto.MemberInputDto;
+import hyewadong.yogosaza.dto.member.MemberOutputDto;
+import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.entity.MemberEntity;
 import org.apache.ibatis.annotations.Mapper;
 
