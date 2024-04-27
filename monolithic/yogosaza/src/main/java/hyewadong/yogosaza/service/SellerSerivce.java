@@ -2,10 +2,11 @@ package hyewadong.yogosaza.service;
 
 
 import hyewadong.yogosaza.converter.MemberConverter;
-import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
+import hyewadong.yogosaza.dto.member.MemberOutputDto;
+import hyewadong.yogosaza.dto.seller.SellerInputDto;
 import hyewadong.yogosaza.entity.MemberEntity;
-import hyewadong.yogosaza.mapper.MemberMapper;
+import hyewadong.yogosaza.mapper.SellerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,35 +18,37 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class MemberService {
+public class SellerSerivce {
 
-    private final MemberMapper memberMapper;
+    private final SellerMapper sellerMapper;
 
-    // 회원 가입
-    public int registerMember(MemberInputDto memberInputDto) throws SQLException {
+    // 판매자 가입
+    public int registerSeller(SellerInputDto sellerInputDto) throws SQLException {
         MemberEntity memberEntity = MemberConverter.memberRegisterDtoToMemberEntity(memberInputDto);
         memberEntity.setMemberCreateDate(LocalDateTime.now());
         return memberMapper.registerMember(memberEntity);
     }
 
-    // 회원 상세 조회
-    public MemberOutputDto getMember(int memberSeq) throws SQLException {
+    // 판매자 상세 조회
+    public MemberOutputDto getSeller(int memberSeq) throws SQLException {
         return memberMapper.getMember(memberSeq);
     }
 
-    // 회원 전체 조회
-    public List<MemberOutputDto> getMembers() throws SQLException {
+    // 판매자 전체 조회
+    public List<MemberOutputDto> getSellers() throws SQLException {
         return memberMapper.getMembers();
     }
 
-    // 회원 정보 수정
-    public int updateMember(MemberInputDto memberInputDto) throws SQLException {
+    // 판매자 정보 수정
+    public int updateseller(MemberInputDto memberInputDto) throws SQLException {
         return memberMapper.updateMember(memberInputDto);
     }
 
-    // 회원 삭제
-    public int deleteMember(MemberInputDto memberInputDto) throws SQLException {
+    // 판매자 삭제
+    public int deleteSeller(MemberInputDto memberInputDto) throws SQLException {
         return memberMapper.deleteMember(memberInputDto.getMemberSeq());
     }
+
+
 
 }
