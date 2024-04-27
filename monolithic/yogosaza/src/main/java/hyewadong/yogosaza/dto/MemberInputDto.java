@@ -3,6 +3,9 @@ package hyewadong.yogosaza.dto;
 
 import lombok.Data;
 
+/**
+ * 회원 입력 폼
+ */
 @Data
 public class MemberInputDto {
 

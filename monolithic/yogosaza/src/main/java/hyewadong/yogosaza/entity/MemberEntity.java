@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 public class MemberEntity {
 
-    private int memberSeq;
+    private Integer memberSeq;
     private String memberId;
     private String memberPwd;
     private String memberName;

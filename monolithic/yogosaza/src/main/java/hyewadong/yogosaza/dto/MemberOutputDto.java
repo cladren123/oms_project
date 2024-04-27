@@ -6,6 +6,10 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * 회원 출력 폼
+ */
+
 @Data
 @Builder
 public class MemberOutputDto {
