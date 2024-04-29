@@ -20,6 +20,10 @@ public class ItemEntity {
     private String itemSize;
     private LocalDateTime itemCreateDate;
 
+    public void makeDate() {
+        itemCreateDate = LocalDateTime.now();
+    }
+
 
 
 

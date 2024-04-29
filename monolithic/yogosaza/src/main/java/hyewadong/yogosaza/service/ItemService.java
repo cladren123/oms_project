@@ -22,6 +22,10 @@ public class ItemService {
     // 상품 등록
     public int registerItem(ItemInputDto itemInputDto) throws SQLException {
         ItemEntity itemEntity = ItemConverter.itemInputDtoToItemEntity(itemInputDto);
+
+        System.out.println(itemEntity.toString());
+
+        itemEntity.makeDate();
         return itemMapper.registerItem(itemEntity);
     }
 
