@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hyewadong.yogosaza.mapper.ItemMapper">
+
+    <!-- 상품 등록 -->
+    <insert id="registerItem" parameterType="ItemEntity">
+        insert into item(brand_seq, category_id, item_code, item_name, item_price, item_color, item_size, item_create_date)
+        values(#{brandSeq}, #{categoryId}, #{itemCode}, #{itemName}, #{itemPrice}, #{itemColor}, #{itemSize}, #{itemCreateDate})
+    </insert>
+
+
+    <!-- 상품 상세 조회  -->
+    <select id="getItem" parameterType="int" resultType="ItemOutputDto">
+        select item_seq, brand_seq, category_id, item_code, item_name, item_price, item_color, item_size, item_create_date
+        from item
+        where item_seq = #{itemSeq}
+    </select>
+
+
+    <!-- 상품 전부 조회  -->
+    <select id="getItems" resultType="ItemOutputDto">
+        select item_seq, brand_seq, category_id, item_code, item_name, item_price, item_color, item_size, item_create_date
+        from item
+    </select>
+
+
+    <!-- 상품 변경  -->
+    <update id="updateItem" parameterType="itemInputDto">
+        update item
+        <trim prefix="set" suffixOverrides=",">
+            <if test="categoryId != null">category_id = #{categoryId},</if>
+            <if test="itemCode != null">item_code = #{itemCode},</if>
+            <if test="itemName != null">item_name = #{itemName},</if>
+            <if test="itemPrice != null">item_price = #{itemPrice},</if>
+            <if test="itemColor != null">item_color = #{itemColor},</if>
+            <if test="itemSize != null">item_size = #{itemSize},</if>
+        </trim>
+        where item_seq = #{itemSeq}
+    </update>
+
+    <!-- 상품 삭제 -->
+    <delete id="deleteItem" parameterType="int">
+        delete from item
+        where item_seq = #{itemSeq}
+    </delete>
+
+</mapper>

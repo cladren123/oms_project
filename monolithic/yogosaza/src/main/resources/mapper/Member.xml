@@ -20,14 +20,14 @@
     </select>
 
 
-    <!-- 멤버 전부 조회  -->
+    <!-- 회원 전부 조회  -->
     <select id="getMembers" resultType="MemberOutputDto">
         select member_seq, member_id, member_name, member_phone, member_address, member_create_date
         from member
     </select>
 
 
-    <!-- 멤버 변경  -->
+    <!-- 회원 변경  -->
     <update id="updateMember" parameterType="MemberInputDto">
         update member
         <trim prefix="set" suffixOverrides=",">
@@ -39,7 +39,7 @@
         where member_id = #{memberId}
     </update>
 
-    <!-- 멤버 삭제 -->
+    <!-- 회원 삭제 -->
     <delete id="deleteMember" parameterType="int">
         delete from member
         where member_seq = #{memberSeq}
