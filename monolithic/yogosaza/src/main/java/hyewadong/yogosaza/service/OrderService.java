@@ -23,6 +23,7 @@ public class OrderService {
     // 주문 등록
     public int registerOrder(OrderInputDto orderInputDto) throws SQLException {
         OrderEntity orderEntity = OrderConverter.orderInputDtoToOrderEntity(orderInputDto);
+        orderEntity.orderRegister();
         return orderMapper.registerOrder(orderEntity);
     }
 
