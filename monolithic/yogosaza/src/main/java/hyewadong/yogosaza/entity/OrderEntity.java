@@ -19,4 +19,10 @@ public class OrderEntity {
     private LocalDateTime orderCreateDate;
     private LocalDateTime orderCancelDate;
 
+    // 주문 취소 메소드
+    public void orderCancel() {
+        orderStatus = "주문취소";
+        orderCancelDate = LocalDateTime.now();
+    }
+
 }

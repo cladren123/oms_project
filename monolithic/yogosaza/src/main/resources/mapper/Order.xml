@@ -5,14 +5,14 @@
 <mapper namespace="hyewadong.yogosaza.mapper.OrderMapper">
 
     <!-- 주문 등록 -->
-    <insert id="registerOrder" parameterType="orderEntity">
+    <insert id="registerOrder" parameterType="OrderEntity">
         insert into order(member_seq, item_seq, order_address, order_Qty, order_status, order_create_date, order_cancel_date)
         values(#{memberSeq}, #{itemSeq}, #{orderAddress}, #{orderQty}, #{orderStatus}, #{orderCreateDate}, #{orderCancelDate})
     </insert>
 
 
     <!-- 주문 상세 조회  -->
-    <select id="getOrder" parameterType="int" resultType="orderOutputDto">
+    <select id="getOrder" parameterType="int" resultType="OrderOutputDto">
         select order_seq, member_seq, item_seq, order_address, order_qty, order_status, order_create_date, order_cancel_date
         from order
         where order_seq = #{orderSeq}
@@ -20,14 +20,14 @@
 
 
     <!-- 회원 주문 조회  -->
-    <select id="getOrdersByMemberSeq" resultType="orderOutputDto">
+    <select id="getOrdersByMemberSeq" resultType="OrderOutputDto">
         select order_seq, member_seq, item_seq, order_address, order_qty, order_status, order_create_date, order_cancel_date
         from order
         where member_seq = #{memberSeq}
     </select>
 
     <!-- 브랜드 주문 조회  -->
-    <select id="getOrdersBySellerSeq" resultType="orderOutputDto">
+    <select id="getOrdersBySellerSeq" resultType="OrderOutputDto">
         select order_seq, member_seq, item_seq, order_address, order_qty, order_status, order_create_date, order_cancel_date
         from order as o
         join item as i on o.item_seq = i.item_seq
@@ -36,7 +36,7 @@
 
 
     <!-- 주문 수정  -->
-    <update id="updateOrder" parameterType="orderInputDto">
+    <update id="updateOrder" parameterType="OrderInputDto">
         update order
         <trim prefix="set" suffixOverrides=",">
             <if test="orderAddress != null">order_address = #{orderAddress},</if>
@@ -47,8 +47,12 @@
     </update>
 
     <!-- 주문 취소 -->
-    <delete id="cancelOrder" parameterType="int">
-        delete from order
+    <delete id="cancelOrder" parameterType="OrderEntity">
+        update order
+        <trim prefix="set" suffixOverrides=",">
+            order_status = #{orderStatus}
+            order_cancel_date = #{orderCancelDate}
+        </trim>
         where order_seq = #{orderSeq}
     </delete>
 

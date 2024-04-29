@@ -24,13 +24,13 @@ public interface OrderMapper {
     public List<OrderOutputDto> getOrdersByMemberSeq(int memberSeq) throws SQLException;
 
     // 브랜드 주문 조회
-    public List<OrderOutputDto> getOrdersBySellerSeq(int brandSeq) throws SQLException;
+    public List<OrderOutputDto> getOrdersByBrandSeq(int brandSeq) throws SQLException;
 
     // 주문 수정
     public int updateOrder(OrderInputDto orderInputDto) throws SQLException;
 
     // 주문 취소
-    public int cancelOrder(OrderInputDto orderInputDto) throws SQLException;
+    public int cancelOrder(OrderEntity orderEntity) throws SQLException;
 
 
 
