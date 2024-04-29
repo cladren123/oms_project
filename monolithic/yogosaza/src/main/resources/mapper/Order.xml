@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hyewadong.yogosaza.mapper.OrderMapper">
+
+    <!-- 주문 등록 -->
+    <insert id="registerOrder" parameterType="orderEntity">
+        insert into order(member_seq, item_seq, order_address, order_Qty, order_status, order_create_date, order_cancel_date)
+        values(#{memberSeq}, #{itemSeq}, #{orderAddress}, #{orderQty}, #{orderStatus}, #{orderCreateDate}, #{orderCancelDate})
+    </insert>
+
+
+    <!-- 주문 상세 조회  -->
+    <select id="getOrder" parameterType="int" resultType="orderOutputDto">
+        select order_seq, member_seq, item_seq, order_address, order_qty, order_status, order_create_date, order_cancel_date
+        from order
+        where order_seq = #{orderSeq}
+    </select>
+
+
+    <!-- 회원 주문 조회  -->
+    <select id="getOrdersByMemberSeq" resultType="orderOutputDto">
+        select order_seq, member_seq, item_seq, order_address, order_qty, order_status, order_create_date, order_cancel_date
+        from order
+        where member_seq = #{memberSeq}
+    </select>
+
+    <!-- 브랜드 주문 조회  -->
+    <select id="getOrdersBySellerSeq" resultType="orderOutputDto">
+        select order_seq, member_seq, item_seq, order_address, order_qty, order_status, order_create_date, order_cancel_date
+        from order as o
+        join item as i on o.item_seq = i.item_seq
+        where i.brand_seq = #{brandSeq}
+    </select>
+
+
+    <!-- 주문 수정  -->
+    <update id="updateOrder" parameterType="orderInputDto">
+        update order
+        <trim prefix="set" suffixOverrides=",">
+            <if test="orderAddress != null">order_address = #{orderAddress},</if>
+            <if test="orderQty != null">order_qty = #{orderQty},</if>
+            <if test="orderStatus != null">order_status = #{orderStatus},</if>
+        </trim>
+        where order_seq = #{orderSeq}
+    </update>
+
+    <!-- 주문 취소 -->
+    <delete id="cancelOrder" parameterType="int">
+        delete from order
+        where order_seq = #{orderSeq}
+    </delete>
+
+</mapper>
