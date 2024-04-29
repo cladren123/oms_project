@@ -22,6 +22,7 @@ public class SellerService {
 
     // 판매자 가입
     public int registerSeller(SellerInputDto sellerInputDto) throws SQLException {
+        System.out.println(sellerInputDto.toString());
         SellerEntity sellerEntity = SellerConverter.sellerInputDtoToSellerEntity(sellerInputDto);
         sellerEntity.makeDate();
         return sellerMapper.registerSeller(sellerEntity);

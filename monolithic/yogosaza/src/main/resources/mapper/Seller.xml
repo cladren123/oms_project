@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="SellerMapper">
+<!-- namespace는 완전한 패키지 경로를 포함하는 것이 권장된다. 이름 충돌 방지, 프로젝트 내의 sql문의 위치를 명확하게 한다. -->
+<mapper namespace="hyewadong.yogosaza.mapper.SellerMapper">
 
     <!-- 판매자 가입 -->
     <insert id="registerSeller" parameterType="SellerEntity">
