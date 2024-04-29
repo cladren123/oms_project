@@ -1,0 +1,101 @@
+
+
+CREATE TABLE `member` (
+	`member_seq`	BIGINT	NOT NULL AUTO_INCREMENT,
+	`member_id`	VARCHAR(20) NOT NULL ,
+	`member_pwd`	VARCHAR(20) NOT NULL ,
+	`member_name`	VARCHAR(10) NOT NULL ,
+	`member_phone`	VARCHAR(12) NOT NULL ,
+	`member_address`	VARCHAR(30) NOT null,
+	`member_create_date` DATETIME NOT NULL,
+	primary key(`member_seq`)
+)
+
+CREATE TABLE `brand` (
+    `brand_seq` BIGINT	NOT NULL AUTO_INCREMENT,
+    `brand_name` VARCHAR(20) NOT NULL,
+    primary key(`brand_seq`)
+)
+
+CREATE TABLE `seller` (
+    `seller_seq` BIGINT	NOT NULL AUTO_INCREMENT,
+    `brand_seq` BIGINT	NOT NULL,
+    `seller_id`	VARCHAR(20) NOT NULL ,
+    `seller_pwd`	VARCHAR(20) NOT NULL ,
+    `seller_name`	VARCHAR(10) NOT NULL ,
+    `seller_phone`	VARCHAR(12) NOT NULL ,
+    `seller_address`	VARCHAR(30) NOT null,
+    `seller_create_date` DATETIME NOT NULL,
+    primary key(`seller_seq`)
+)
+
+CREATE TABLE `order` (
+    `order_seq` BIGINT	NOT NULL AUTO_INCREMENT,
+    `member_seq` BIGINT	NOT NULL,
+    `item_seq` BIGINT	NOT NULL,
+    `order_address`	VARCHAR(20) NOT NULL ,
+    `order_qty`	BIGINT NOT NULL ,
+    `order_status`	VARCHAR(10) NOT NULL ,
+    `order_create_date`	DATETIME NOT NULL,
+    `order_cancel_date`	DATETIME,
+    primary key(`order_seq`)
+)
+
+
+CREATE TABLE `kpi` (
+    `kpi_seq` BIGINT	NOT NULL AUTO_INCREMENT,
+    `order_seq` BIGINT	NOT NULL,
+    `brand_seq` BIGINT	NOT NULL,
+    `item_seq` BIGINT	NOT NULL,
+    `kpi_price`	BIGINT NOT NULL ,
+    `kpi_create_date`	DATETIME NOT NULL,
+    primary key(`kpi_seq`)
+)
+
+CREATE TABLE `item` (
+    `item_seq` BIGINT	NOT NULL AUTO_INCREMENT,
+    `brand_seq` BIGINT	NOT NULL,
+    `category_id` BIGINT	NOT NULL,
+    `item_code`	VARCHAR(20) NOT NULL ,
+    `item_name`	VARCHAR(20) NOT NULL ,
+    `item_price`	BIGINT	NOT NULL,
+    `item_color`	VARCHAR(10) NOT NULL,
+    `item_size`	VARCHAR(10) NOT NULL,
+    `item_create_date`	DATETIME,
+    primary key(`item_seq`)
+)
+
+CREATE TABLE `return` (
+    `return_seq` BIGINT	NOT NULL AUTO_INCREMENT,
+    `member_seq` BIGINT	NOT NULL,
+    `order_seq` BIGINT	NOT NULL,
+    `item_code`	VARCHAR(20) NOT NULL ,
+    `return_qty`	BIGINT	NOT NULL,
+    `return_create_date`	DATETIME,
+    primary key(`return_seq`)
+)
+
+CREATE TABLE `pay` (
+    `pay_seq` BIGINT	NOT NULL AUTO_INCREMENT,
+    `order_seq` BIGINT	NOT NULL,
+    `pay_type` 	VARCHAR(20) NOT NULL ,
+    `pay_card_no`	VARCHAR(20) NOT NULL ,
+    `pay_price`	BIGINT	NOT NULL,
+    `pay_create_date`	DATETIME,
+    primary key(`pay_seq`)
+)
+
+CREATE TABLE `stock` (
+    `stock_seq` BIGINT	NOT NULL AUTO_INCREMENT,
+    `item_seq` BIGINT	NOT NULL,
+    `stock_qty`	BIGINT	NOT NULL,
+    primary key(`stock_seq`)
+)
+
+CREATE TABLE `stock_history` (
+    `stock_history_seq` BIGINT	NOT NULL AUTO_INCREMENT,
+    `item_seq` BIGINT	NOT NULL,
+    `stock_change_qty`	BIGINT	NOT NULL,
+	 `stock_create_date`	DATETIME,
+    primary key(`stock_history_seq`)
+)
