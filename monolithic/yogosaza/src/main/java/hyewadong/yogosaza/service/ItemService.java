@@ -41,8 +41,8 @@ public class ItemService {
     }
 
     // 상품 삭제
-    public int deleteItem(int itemSeq) throws SQLException {
-        return itemMapper.deleteItem(itemSeq);
+    public int deleteItem(ItemInputDto itemInputDto) throws SQLException {
+        return itemMapper.deleteItem(itemInputDto.getItemSeq());
     }
 
 
