@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 완전한 패키지 경로를 포함하는 것이 권장된다. 이름 충돌 방지, 프로젝트 내의 sql문의 위치를 명확하게 한다. -->
+<mapper namespace="hyewadong.yogosaza.mapper.StockMapper">
+
+    <!-- 재고 등록 -->
+    <insert id="registerStock" parameterType="stockEntity">
+        insert into stock(item_seq, stock_qty)
+        values(#{itemSeq}, #{stockQty})
+    </insert>
+
+
+    <!-- 재고 조회  -->
+    <select id="getStock" parameterType="int" resultType="stockOutputDto">
+        select stock_seq, item_seq, stock_qty
+        from stock
+        where stock_seq = #{stockSeq}
+    </select>
+
+
+    <!-- 재고 전체 조회 -->
+    <select id="getStocks" resultType="stockOutputDto">
+        select stock_seq, item_seq, stock_qty
+        from stock
+    </select>
+
+
+    <!-- 재고 수정  -->
+    <update id="updateStock" parameterType="stockInputDto">
+        update stock
+        <trim prefix="set" suffixOverrides=",">
+            <if test="stockQty != null">stock_qty = #{stockQty},</if>
+        </trim>
+        where stock_seq = #{stockSeq}
+    </update>
+
+
+</mapper>

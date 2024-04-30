@@ -26,7 +26,7 @@ public class StockService {
         return stockMapper.registerStock(stockEntity);
     }
 
-    // 재고 조회
+    // 재고 상세 조회
     public StockOutputDto getStock(int stockSeq) throws SQLException {
         StockOutputDto result = stockMapper.getStock(stockSeq);
         return result;
