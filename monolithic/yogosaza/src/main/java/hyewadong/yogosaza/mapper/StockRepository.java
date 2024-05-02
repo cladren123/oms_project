@@ -1,7 +1,5 @@
 package hyewadong.yogosaza.mapper;
 
-import hyewadong.yogosaza.dto.seller.SellerInputDto;
-import hyewadong.yogosaza.dto.seller.SellerOutputDto;
 import hyewadong.yogosaza.dto.stock.StockInputDto;
 import hyewadong.yogosaza.dto.stock.StockOutputDto;
 import hyewadong.yogosaza.entity.StockDomain;
@@ -11,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Mapper
-public interface StockMapper {
+public interface StockRepository {
 
     // 재고 등록
     public int registerStock(StockDomain stockDomain) throws SQLException;
