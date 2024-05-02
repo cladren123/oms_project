@@ -6,7 +6,7 @@
 
     <!-- 회원가입 -->
     <!-- insert문은 일반적으로 삽입된 행의 수를 반환하도록 설계되어 있다.    -->
-    <insert id="registerMember" parameterType="MemberEntity">
+    <insert id="registerMember" parameterType="MemberDomain">
         insert into member(member_id, member_pwd, member_name, member_phone, member_address, member_create_date)
         values(#{memberId}, #{memberPwd}, #{memberName}, #{memberPhone}, #{memberAddress}, #{memberCreateDate})
     </insert>

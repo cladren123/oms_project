@@ -4,7 +4,7 @@ package hyewadong.yogosaza.service;
 import hyewadong.yogosaza.converter.MemberConverter;
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
-import hyewadong.yogosaza.entity.MemberEntity;
+import hyewadong.yogosaza.entity.MemberDomain;
 import hyewadong.yogosaza.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,9 +23,9 @@ public class MemberService {
 
     // 회원 가입
     public int registerMember(MemberInputDto memberInputDto) throws SQLException {
-        MemberEntity memberEntity = MemberConverter.memberRegisterDtoToMemberEntity(memberInputDto);
-        memberEntity.setMemberCreateDate(LocalDateTime.now());
-        return memberMapper.registerMember(memberEntity);
+        MemberDomain memberDomain = MemberConverter.memberRegisterDtoToMemberEntity(memberInputDto);
+        memberDomain.setMemberCreateDate(LocalDateTime.now());
+        return memberMapper.registerMember(memberDomain);
     }
 
     // 회원 상세 조회

@@ -3,7 +3,7 @@ package hyewadong.yogosaza.mapper;
 
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
-import hyewadong.yogosaza.entity.MemberEntity;
+import hyewadong.yogosaza.entity.MemberDomain;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.sql.SQLException;
@@ -13,7 +13,7 @@ import java.util.List;
 public interface MemberMapper {
 
     // 회원 가입
-    public int registerMember(MemberEntity memberEntity) throws SQLException;
+    public int registerMember(MemberDomain memberDomain) throws SQLException;
 
     // 회원 상세 조회
     public MemberOutputDto getMember(int memberSeq) throws SQLException;
