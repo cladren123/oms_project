@@ -4,7 +4,7 @@ package hyewadong.yogosaza.service;
 import hyewadong.yogosaza.converter.OrderConverter;
 import hyewadong.yogosaza.dto.order.OrderInputDto;
 import hyewadong.yogosaza.dto.order.OrderOutputDto;
-import hyewadong.yogosaza.entity.OrderEntity;
+import hyewadong.yogosaza.entity.OrderDomain;
 import hyewadong.yogosaza.mapper.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,9 +22,9 @@ public class OrderService {
 
     // 주문 등록
     public int registerOrder(OrderInputDto orderInputDto) throws SQLException {
-        OrderEntity orderEntity = OrderConverter.orderInputDtoToOrderEntity(orderInputDto);
-        orderEntity.orderRegister();
-        return orderMapper.registerOrder(orderEntity);
+        OrderDomain orderDomain = OrderConverter.orderInputDtoToOrderEntity(orderInputDto);
+        orderDomain.orderRegister();
+        return orderMapper.registerOrder(orderDomain);
     }
 
     // 주문 상세 조회
@@ -49,9 +49,9 @@ public class OrderService {
 
     // 주문 취소
     public int cancelOrder(OrderInputDto orderInputDto) throws SQLException {
-        OrderEntity orderEntity = OrderConverter.orderInputDtoToOrderEntity(orderInputDto);
-        orderEntity.orderCancel();
-        return orderMapper.cancelOrder(orderEntity);
+        OrderDomain orderDomain = OrderConverter.orderInputDtoToOrderEntity(orderInputDto);
+        orderDomain.orderCancel();
+        return orderMapper.cancelOrder(orderDomain);
     }
 
 }

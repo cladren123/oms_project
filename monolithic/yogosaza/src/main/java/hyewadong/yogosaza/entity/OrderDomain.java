@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class OrderEntity {
+public class OrderDomain {
 
     private Integer orderSeq;
     private Integer memberSeq;

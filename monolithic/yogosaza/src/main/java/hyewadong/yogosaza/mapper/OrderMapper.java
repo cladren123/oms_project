@@ -4,7 +4,7 @@ import hyewadong.yogosaza.dto.item.ItemOutputDto;
 import hyewadong.yogosaza.dto.order.OrderInputDto;
 import hyewadong.yogosaza.dto.order.OrderOutputDto;
 import hyewadong.yogosaza.entity.ItemDomain;
-import hyewadong.yogosaza.entity.OrderEntity;
+import hyewadong.yogosaza.entity.OrderDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.w3c.dom.stylesheets.LinkStyle;
 
@@ -15,7 +15,7 @@ import java.util.List;
 public interface OrderMapper {
 
     // 주문 등록
-    public int registerOrder(OrderEntity orderEntity) throws SQLException;
+    public int registerOrder(OrderDomain orderDomain) throws SQLException;
 
     // 주문 상세 조회
     public OrderOutputDto getOrder(int orderSeq) throws SQLException;
@@ -30,7 +30,7 @@ public interface OrderMapper {
     public int updateOrder(OrderInputDto orderInputDto) throws SQLException;
 
     // 주문 취소
-    public int cancelOrder(OrderEntity orderEntity) throws SQLException;
+    public int cancelOrder(OrderDomain orderDomain) throws SQLException;
 
 
 
