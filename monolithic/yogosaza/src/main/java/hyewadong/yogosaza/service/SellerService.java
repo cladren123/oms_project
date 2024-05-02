@@ -6,7 +6,7 @@ import hyewadong.yogosaza.converter.SellerConverter;
 import hyewadong.yogosaza.dto.seller.SellerInputDto;
 import hyewadong.yogosaza.dto.seller.SellerOutputDto;
 import hyewadong.yogosaza.domain.SellerDomain;
-import hyewadong.yogosaza.repository.SellerRepository;
+import hyewadong.yogosaza.mapper.SellerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,33 +19,33 @@ import java.util.List;
 @Transactional
 public class SellerService {
 
-    private final SellerRepository sellerRepository;
+    private final SellerMapper sellerMapper;
 
     // 판매자 가입
     public int registerSeller(SellerInputDto sellerInputDto) throws SQLException {
         SellerDomain sellerDomain = SellerConverter.sellerInputDtoToSellerDomain(sellerInputDto);
         sellerDomain.makeDate();
-        return sellerRepository.registerSeller(sellerDomain);
+        return sellerMapper.registerSeller(sellerDomain);
     }
 
     // 판매자 상세 조회
     public SellerOutputDto getSeller(int sellerSeq) throws SQLException {
-        return sellerRepository.getSeller(sellerSeq);
+        return sellerMapper.getSeller(sellerSeq);
     }
 
     // 판매자 전체 조회
     public List<SellerOutputDto> getSellers() throws SQLException {
-        return sellerRepository.getSellers();
+        return sellerMapper.getSellers();
     }
 
     // 판매자 정보 수정
     public int updateSeller(SellerInputDto sellerInputDto) throws SQLException {
-        return sellerRepository.updateSeller(sellerInputDto);
+        return sellerMapper.updateSeller(sellerInputDto);
     }
 
     // 판매자 삭제
     public int deleteSeller(SellerInputDto sellerInputDto) throws SQLException {
-        return sellerRepository.deleteSeller(sellerInputDto.getSellerSeq());
+        return sellerMapper.deleteSeller(sellerInputDto.getSellerSeq());
     }
 
 

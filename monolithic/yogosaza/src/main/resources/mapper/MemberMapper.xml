@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="hyewadong.yogosaza.repository.MemberRepository">
+<mapper namespace="hyewadong.yogosaza.mapper.MemberMapper">
 
     <!-- 회원가입 -->
     <!-- insert문은 일반적으로 삽입된 행의 수를 반환하도록 설계되어 있다.    -->

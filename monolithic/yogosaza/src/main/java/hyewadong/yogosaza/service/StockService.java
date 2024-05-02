@@ -5,7 +5,7 @@ import hyewadong.yogosaza.converter.StockConverter;
 import hyewadong.yogosaza.dto.stock.StockInputDto;
 import hyewadong.yogosaza.dto.stock.StockOutputDto;
 import hyewadong.yogosaza.domain.StockDomain;
-import hyewadong.yogosaza.repository.StockRepository;
+import hyewadong.yogosaza.mapper.StockMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,28 +18,28 @@ import java.util.List;
 @Transactional
 public class StockService {
 
-    private final StockRepository stockRepository;
+    private final StockMapper stockMapper;
 
     // 재고 등록 
     public int registerStock(StockInputDto stockInputDto) throws SQLException {
         StockDomain stockDomain = StockConverter.stockInputDtoToStockDomain(stockInputDto);
-        return stockRepository.registerStock(stockDomain);
+        return stockMapper.registerStock(stockDomain);
     }
 
     // 재고 상세 조회
     public StockOutputDto getStock(int stockSeq) throws SQLException {
-        StockOutputDto result = stockRepository.getStock(stockSeq);
+        StockOutputDto result = stockMapper.getStock(stockSeq);
         return result;
     }
 
     // 재고 전체 조회
     public List<StockOutputDto> getStocks() throws SQLException {
-        return stockRepository.getStocks();
+        return stockMapper.getStocks();
     }
 
     // 재고 수정
     public int updateStock(StockInputDto stockInputDto) throws SQLException {
-        return stockRepository.updateStock(stockInputDto);
+        return stockMapper.updateStock(stockInputDto);
     }
 
 

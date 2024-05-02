@@ -1,4 +1,4 @@
-package hyewadong.yogosaza.repository;
+package hyewadong.yogosaza.mapper;
 
 import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Mapper
-public interface ItemRepository {
+public interface ItemMapper {
 
     // 상품 등록
     public int registerItem(ItemDomain itemDomain) throws SQLException;

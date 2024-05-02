@@ -1,4 +1,4 @@
-package hyewadong.yogosaza.repository;
+package hyewadong.yogosaza.mapper;
 
 
 import hyewadong.yogosaza.dto.seller.SellerInputDto;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Mapper
-public interface SellerRepository {
+public interface SellerMapper {
 
     // 판매자 가입
     public int registerSeller(SellerDomain sellerDomain) throws SQLException;

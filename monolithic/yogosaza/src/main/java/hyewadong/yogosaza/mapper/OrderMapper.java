@@ -1,4 +1,4 @@
-package hyewadong.yogosaza.repository;
+package hyewadong.yogosaza.mapper;
 
 import hyewadong.yogosaza.dto.order.OrderInputDto;
 import hyewadong.yogosaza.dto.order.OrderOutputDto;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Mapper
-public interface OrderRepository {
+public interface OrderMapper {
 
     // 주문 등록
     public int registerOrder(OrderDomain orderDomain) throws SQLException;
