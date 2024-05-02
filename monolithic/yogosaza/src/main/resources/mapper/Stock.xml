@@ -6,7 +6,7 @@
 <mapper namespace="hyewadong.yogosaza.mapper.StockMapper">
 
     <!-- 재고 등록 -->
-    <insert id="registerStock" parameterType="stockEntity">
+    <insert id="registerStock" parameterType="stockDomain">
         insert into stock(item_seq, stock_qty)
         values(#{itemSeq}, #{stockQty})
     </insert>

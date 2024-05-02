@@ -5,7 +5,7 @@ import hyewadong.yogosaza.entity.MemberDomain;
 
 public class MemberConverter {
 
-    static public MemberDomain memberRegisterDtoToMemberEntity(MemberInputDto memberInputDto) {
+    static public MemberDomain memberRegisterDtoToMemberDomain(MemberInputDto memberInputDto) {
         return MemberDomain.builder()
                 .memberId(memberInputDto.getMemberId())
                 .memberPwd(memberInputDto.getMemberPwd())

@@ -22,7 +22,7 @@ public class SellerService {
 
     // 판매자 가입
     public int registerSeller(SellerInputDto sellerInputDto) throws SQLException {
-        SellerDomain sellerDomain = SellerConverter.sellerInputDtoToSellerEntity(sellerInputDto);
+        SellerDomain sellerDomain = SellerConverter.sellerInputDtoToSellerDomain(sellerInputDto);
         sellerDomain.makeDate();
         return sellerMapper.registerSeller(sellerDomain);
     }

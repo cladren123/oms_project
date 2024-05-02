@@ -4,7 +4,7 @@ package hyewadong.yogosaza.service;
 import hyewadong.yogosaza.converter.StockConverter;
 import hyewadong.yogosaza.dto.stock.StockInputDto;
 import hyewadong.yogosaza.dto.stock.StockOutputDto;
-import hyewadong.yogosaza.entity.StockEntity;
+import hyewadong.yogosaza.entity.StockDomain;
 import hyewadong.yogosaza.mapper.StockMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,8 +22,8 @@ public class StockService {
 
     // 재고 등록 
     public int registerStock(StockInputDto stockInputDto) throws SQLException {
-        StockEntity stockEntity = StockConverter.stockInputDtoToStockEntity(stockInputDto);
-        return stockMapper.registerStock(stockEntity);
+        StockDomain stockDomain = StockConverter.stockInputDtoToStockDomain(stockInputDto);
+        return stockMapper.registerStock(stockDomain);
     }
 
     // 재고 상세 조회

@@ -22,7 +22,7 @@ public class OrderService {
 
     // 주문 등록
     public int registerOrder(OrderInputDto orderInputDto) throws SQLException {
-        OrderDomain orderDomain = OrderConverter.orderInputDtoToOrderEntity(orderInputDto);
+        OrderDomain orderDomain = OrderConverter.orderInputDtoToOrderDomain(orderInputDto);
         orderDomain.orderRegister();
         return orderMapper.registerOrder(orderDomain);
     }
@@ -49,7 +49,7 @@ public class OrderService {
 
     // 주문 취소
     public int cancelOrder(OrderInputDto orderInputDto) throws SQLException {
-        OrderDomain orderDomain = OrderConverter.orderInputDtoToOrderEntity(orderInputDto);
+        OrderDomain orderDomain = OrderConverter.orderInputDtoToOrderDomain(orderInputDto);
         orderDomain.orderCancel();
         return orderMapper.cancelOrder(orderDomain);
     }

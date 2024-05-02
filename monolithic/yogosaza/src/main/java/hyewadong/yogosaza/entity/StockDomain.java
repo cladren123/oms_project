@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class StockEntity {
+public class StockDomain {
 
     private Integer stockSeq;
     private Integer itemSeq;

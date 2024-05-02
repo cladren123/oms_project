@@ -5,7 +5,7 @@ import hyewadong.yogosaza.entity.OrderDomain;
 
 public class OrderConverter {
 
-    public static OrderDomain orderInputDtoToOrderEntity(OrderInputDto orderInputDto) {
+    public static OrderDomain orderInputDtoToOrderDomain(OrderInputDto orderInputDto) {
         return OrderDomain.builder()
                 .orderSeq(orderInputDto.getOrderSeq())
                 .memberSeq(orderInputDto.getMemberSeq())

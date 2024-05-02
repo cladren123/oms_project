@@ -23,7 +23,7 @@ public class MemberService {
 
     // 회원 가입
     public int registerMember(MemberInputDto memberInputDto) throws SQLException {
-        MemberDomain memberDomain = MemberConverter.memberRegisterDtoToMemberEntity(memberInputDto);
+        MemberDomain memberDomain = MemberConverter.memberRegisterDtoToMemberDomain(memberInputDto);
         memberDomain.setMemberCreateDate(LocalDateTime.now());
         return memberMapper.registerMember(memberDomain);
     }

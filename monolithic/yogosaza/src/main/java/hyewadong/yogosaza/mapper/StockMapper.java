@@ -4,7 +4,7 @@ import hyewadong.yogosaza.dto.seller.SellerInputDto;
 import hyewadong.yogosaza.dto.seller.SellerOutputDto;
 import hyewadong.yogosaza.dto.stock.StockInputDto;
 import hyewadong.yogosaza.dto.stock.StockOutputDto;
-import hyewadong.yogosaza.entity.StockEntity;
+import hyewadong.yogosaza.entity.StockDomain;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ import java.util.List;
 public interface StockMapper {
 
     // 재고 등록
-    public int registerStock(StockEntity stock) throws SQLException;
+    public int registerStock(StockDomain stockDomain) throws SQLException;
 
     // 재고 조회
     public StockOutputDto getStock(int stockSeq) throws SQLException;

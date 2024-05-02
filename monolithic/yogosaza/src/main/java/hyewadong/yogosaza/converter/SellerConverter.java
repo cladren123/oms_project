@@ -5,7 +5,7 @@ import hyewadong.yogosaza.entity.SellerDomain;
 
 public class SellerConverter {
 
-    public static SellerDomain sellerInputDtoToSellerEntity(SellerInputDto sellerInputDto) {
+    public static SellerDomain sellerInputDtoToSellerDomain(SellerInputDto sellerInputDto) {
         return SellerDomain.builder()
                 .brandSeq(sellerInputDto.getBrandSeq())
                 .sellerId(sellerInputDto.getSellerId())
