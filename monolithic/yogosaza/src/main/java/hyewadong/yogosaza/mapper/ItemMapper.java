@@ -1,9 +1,9 @@
-package hyewadong.yogosaza.converter;
+package hyewadong.yogosaza.mapper;
 
 import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.entity.ItemDomain;
 
-public class ItemConverter {
+public class ItemMapper {
 
     public static ItemDomain itemInputDtoToItemDomain(ItemInputDto itemInputDto) {
         return ItemDomain.builder()

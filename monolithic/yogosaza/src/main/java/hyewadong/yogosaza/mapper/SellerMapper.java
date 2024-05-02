@@ -1,9 +1,9 @@
-package hyewadong.yogosaza.converter;
+package hyewadong.yogosaza.mapper;
 
 import hyewadong.yogosaza.dto.seller.SellerInputDto;
 import hyewadong.yogosaza.entity.SellerDomain;
 
-public class SellerConverter {
+public class SellerMapper {
 
     public static SellerDomain sellerInputDtoToSellerDomain(SellerInputDto sellerInputDto) {
         return SellerDomain.builder()

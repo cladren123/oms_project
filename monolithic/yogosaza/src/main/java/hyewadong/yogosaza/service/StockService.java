@@ -1,7 +1,7 @@
 package hyewadong.yogosaza.service;
 
 
-import hyewadong.yogosaza.converter.StockConverter;
+import hyewadong.yogosaza.mapper.StockMapper;
 import hyewadong.yogosaza.dto.stock.StockInputDto;
 import hyewadong.yogosaza.dto.stock.StockOutputDto;
 import hyewadong.yogosaza.entity.StockDomain;
@@ -22,7 +22,7 @@ public class StockService {
 
     // 재고 등록 
     public int registerStock(StockInputDto stockInputDto) throws SQLException {
-        StockDomain stockDomain = StockConverter.stockInputDtoToStockDomain(stockInputDto);
+        StockDomain stockDomain = StockMapper.stockInputDtoToStockDomain(stockInputDto);
         return stockRepository.registerStock(stockDomain);
     }
 

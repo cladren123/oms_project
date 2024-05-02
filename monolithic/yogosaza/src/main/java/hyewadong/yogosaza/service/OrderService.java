@@ -1,7 +1,7 @@
 package hyewadong.yogosaza.service;
 
 
-import hyewadong.yogosaza.converter.OrderConverter;
+import hyewadong.yogosaza.mapper.OrderMapper;
 import hyewadong.yogosaza.dto.order.OrderInputDto;
 import hyewadong.yogosaza.dto.order.OrderOutputDto;
 import hyewadong.yogosaza.entity.OrderDomain;
@@ -22,7 +22,7 @@ public class OrderService {
 
     // 주문 등록
     public int registerOrder(OrderInputDto orderInputDto) throws SQLException {
-        OrderDomain orderDomain = OrderConverter.orderInputDtoToOrderDomain(orderInputDto);
+        OrderDomain orderDomain = OrderMapper.orderInputDtoToOrderDomain(orderInputDto);
         orderDomain.orderRegister();
         return orderRepository.registerOrder(orderDomain);
     }
@@ -49,7 +49,7 @@ public class OrderService {
 
     // 주문 취소
     public int cancelOrder(OrderInputDto orderInputDto) throws SQLException {
-        OrderDomain orderDomain = OrderConverter.orderInputDtoToOrderDomain(orderInputDto);
+        OrderDomain orderDomain = OrderMapper.orderInputDtoToOrderDomain(orderInputDto);
         orderDomain.orderCancel();
         return orderRepository.cancelOrder(orderDomain);
     }

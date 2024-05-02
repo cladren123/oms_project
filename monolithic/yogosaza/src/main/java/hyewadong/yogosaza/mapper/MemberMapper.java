@@ -1,9 +1,9 @@
-package hyewadong.yogosaza.converter;
+package hyewadong.yogosaza.mapper;
 
 import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.entity.MemberDomain;
 
-public class MemberConverter {
+public class MemberMapper {
 
     static public MemberDomain memberRegisterDtoToMemberDomain(MemberInputDto memberInputDto) {
         return MemberDomain.builder()
