@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 완전한 패키지 경로를 포함하는 것이 권장된다. 이름 충돌 방지, 프로젝트 내의 sql문의 위치를 명확하게 한다. -->
+<mapper namespace="hyewadong.yogosaza.mapper.KpiMapper">
+
+    <!-- 실적 등록 -->
+    <insert id="registerKpi" parameterType="KpiDomain">
+        insert into kpi(order_seq, brand_seq, item_seq, kpi_price, kpi_create_date)
+        values(#{orderSeq}, #{brandSeq}, #{itemSeq}, #{kpiPrice}, #{kpiCreateDate})
+    </insert>
+
+
+    <!-- 실적 조회  -->
+    <select id="getKpi" parameterType="int" resultType="KpiOutputDto">
+        select kpi_seq, order_seq, brand_seq, item_seq, kpi_price, kpi_create_date
+        from kpi
+        where kpi_seq = #{kpiSeq}
+    </select>
+
+
+    <!-- 실적 전체 조회 -->
+    <select id="getKpis" resultType="KpiOutputDto">
+        select  kpi_seq, order_seq, brand_seq, item_seq, kpi_price, kpi_create_date
+        from kpi
+    </select>
+
+
+    <!-- 실적 수정  -->
+    <update id="updateKpi" parameterType="PayDomain">
+        update kpi
+        <trim prefix="set" suffixOverrides=",">
+            <if test="orderSeq != null">order_seq = #{orderSeq},</if>
+            <if test="brandSeq != null">brand_seq = #{brandSeq},</if>
+            <if test="itemSeq != null">item_seq = #{itemSeq},</if>
+            <if test="kpiPrice != null">kpi_price = #{kpiPrice},</if>
+            <if test="kpiCreateDate != null">kpi_create_date = #{kpiCreateDate},</if>
+        </trim>
+        where kpi_seq = #{kpiSeq}
+    </update>
+
+
+</mapper>
