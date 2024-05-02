@@ -1,7 +1,7 @@
 package hyewadong.yogosaza.service;
 
 
-import hyewadong.yogosaza.mapper.MemberMapper;
+import hyewadong.yogosaza.converter.MemberConverter;
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.domain.MemberDomain;
@@ -23,7 +23,7 @@ public class MemberService {
 
     // 회원 가입
     public int registerMember(MemberInputDto memberInputDto) throws SQLException {
-        MemberDomain memberDomain = MemberMapper.memberRegisterDtoToMemberDomain(memberInputDto);
+        MemberDomain memberDomain = MemberConverter.memberRegisterDtoToMemberDomain(memberInputDto);
         memberDomain.setMemberCreateDate(LocalDateTime.now());
         return memberRepository.registerMember(memberDomain);
     }

@@ -1,9 +1,9 @@
-package hyewadong.yogosaza.mapper;
+package hyewadong.yogosaza.converter;
 
 import hyewadong.yogosaza.dto.order.OrderInputDto;
 import hyewadong.yogosaza.domain.OrderDomain;
 
-public class OrderMapper {
+public class OrderConverter {
 
     public static OrderDomain orderInputDtoToOrderDomain(OrderInputDto orderInputDto) {
         return OrderDomain.builder()

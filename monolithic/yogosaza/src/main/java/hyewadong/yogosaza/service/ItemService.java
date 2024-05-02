@@ -1,6 +1,6 @@
 package hyewadong.yogosaza.service;
 
-import hyewadong.yogosaza.mapper.ItemMapper;
+import hyewadong.yogosaza.converter.ItemConverter;
 import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
 import hyewadong.yogosaza.domain.ItemDomain;
@@ -21,7 +21,7 @@ public class ItemService {
 
     // 상품 등록
     public int registerItem(ItemInputDto itemInputDto) throws SQLException {
-        ItemDomain itemDomain = ItemMapper.itemInputDtoToItemDomain(itemInputDto);
+        ItemDomain itemDomain = ItemConverter.itemInputDtoToItemDomain(itemInputDto);
         itemDomain.makeDate();
         return itemRepository.registerItem(itemDomain);
     }

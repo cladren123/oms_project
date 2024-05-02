@@ -1,9 +1,9 @@
-package hyewadong.yogosaza.mapper;
+package hyewadong.yogosaza.converter;
 
 import hyewadong.yogosaza.dto.stock.StockInputDto;
 import hyewadong.yogosaza.domain.StockDomain;
 
-public class StockMapper {
+public class StockConverter {
 
     public static StockDomain stockInputDtoToStockDomain(StockInputDto stockInputDto) {
         return StockDomain.builder()

@@ -2,7 +2,7 @@ package hyewadong.yogosaza.service;
 
 
 
-import hyewadong.yogosaza.mapper.SellerMapper;
+import hyewadong.yogosaza.converter.SellerConverter;
 import hyewadong.yogosaza.dto.seller.SellerInputDto;
 import hyewadong.yogosaza.dto.seller.SellerOutputDto;
 import hyewadong.yogosaza.domain.SellerDomain;
@@ -23,7 +23,7 @@ public class SellerService {
 
     // 판매자 가입
     public int registerSeller(SellerInputDto sellerInputDto) throws SQLException {
-        SellerDomain sellerDomain = SellerMapper.sellerInputDtoToSellerDomain(sellerInputDto);
+        SellerDomain sellerDomain = SellerConverter.sellerInputDtoToSellerDomain(sellerInputDto);
         sellerDomain.makeDate();
         return sellerRepository.registerSeller(sellerDomain);
     }
