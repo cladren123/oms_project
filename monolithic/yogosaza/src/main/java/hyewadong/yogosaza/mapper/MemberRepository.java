@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Mapper
-public interface MemberMapper {
+public interface MemberRepository {
 
     // 회원 가입
     public int registerMember(MemberDomain memberDomain) throws SQLException;

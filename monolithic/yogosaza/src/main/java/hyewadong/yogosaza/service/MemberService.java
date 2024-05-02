@@ -5,7 +5,7 @@ import hyewadong.yogosaza.converter.MemberConverter;
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.entity.MemberDomain;
-import hyewadong.yogosaza.mapper.MemberMapper;
+import hyewadong.yogosaza.mapper.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,33 +19,33 @@ import java.util.List;
 @Transactional
 public class MemberService {
 
-    private final MemberMapper memberMapper;
+    private final MemberRepository memberRepository;
 
     // 회원 가입
     public int registerMember(MemberInputDto memberInputDto) throws SQLException {
         MemberDomain memberDomain = MemberConverter.memberRegisterDtoToMemberDomain(memberInputDto);
         memberDomain.setMemberCreateDate(LocalDateTime.now());
-        return memberMapper.registerMember(memberDomain);
+        return memberRepository.registerMember(memberDomain);
     }
 
     // 회원 상세 조회
     public MemberOutputDto getMember(int memberSeq) throws SQLException {
-        return memberMapper.getMember(memberSeq);
+        return memberRepository.getMember(memberSeq);
     }
 
     // 회원 전체 조회
     public List<MemberOutputDto> getMembers() throws SQLException {
-        return memberMapper.getMembers();
+        return memberRepository.getMembers();
     }
 
     // 회원 정보 수정
     public int updateMember(MemberInputDto memberInputDto) throws SQLException {
-        return memberMapper.updateMember(memberInputDto);
+        return memberRepository.updateMember(memberInputDto);
     }
 
     // 회원 삭제
     public int deleteMember(MemberInputDto memberInputDto) throws SQLException {
-        return memberMapper.deleteMember(memberInputDto.getMemberSeq());
+        return memberRepository.deleteMember(memberInputDto.getMemberSeq());
     }
 
 }
