@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Mapper
-public interface ItemMapper {
+public interface ItemRepository {
 
     // 상품 등록
     public int registerItem(ItemDomain itemDomain) throws SQLException;

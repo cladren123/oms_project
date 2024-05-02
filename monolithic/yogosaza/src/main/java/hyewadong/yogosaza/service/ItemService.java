@@ -4,7 +4,7 @@ import hyewadong.yogosaza.converter.ItemConverter;
 import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
 import hyewadong.yogosaza.entity.ItemDomain;
-import hyewadong.yogosaza.mapper.ItemMapper;
+import hyewadong.yogosaza.mapper.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,33 +17,33 @@ import java.util.List;
 @Transactional
 public class ItemService {
 
-    private final ItemMapper itemMapper;
+    private final ItemRepository itemRepository;
 
     // 상품 등록
     public int registerItem(ItemInputDto itemInputDto) throws SQLException {
         ItemDomain itemDomain = ItemConverter.itemInputDtoToItemDomain(itemInputDto);
         itemDomain.makeDate();
-        return itemMapper.registerItem(itemDomain);
+        return itemRepository.registerItem(itemDomain);
     }
 
     // 상품 조회
     public ItemOutputDto getItem(int itemSeq) throws SQLException {
-        return itemMapper.getItem(itemSeq);
+        return itemRepository.getItem(itemSeq);
     }
 
     // 상품 전체 조회
     public List<ItemOutputDto> getItems() throws SQLException {
-        return itemMapper.getItems();
+        return itemRepository.getItems();
     }
 
     // 상품 수정
     public int updateItem(ItemInputDto itemInputDto) throws SQLException {
-        return itemMapper.updateItem(itemInputDto);
+        return itemRepository.updateItem(itemInputDto);
     }
 
     // 상품 삭제
     public int deleteItem(ItemInputDto itemInputDto) throws SQLException {
-        return itemMapper.deleteItem(itemInputDto.getItemSeq());
+        return itemRepository.deleteItem(itemInputDto.getItemSeq());
     }
 
 
