@@ -1,7 +1,7 @@
 package hyewadong.yogosaza.mapper;
 
 import hyewadong.yogosaza.dto.order.OrderInputDto;
-import hyewadong.yogosaza.entity.OrderDomain;
+import hyewadong.yogosaza.domain.OrderDomain;
 
 public class OrderMapper {
 

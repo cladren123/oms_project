@@ -1,7 +1,7 @@
 package hyewadong.yogosaza.mapper;
 
 import hyewadong.yogosaza.dto.stock.StockInputDto;
-import hyewadong.yogosaza.entity.StockDomain;
+import hyewadong.yogosaza.domain.StockDomain;
 
 public class StockMapper {
 

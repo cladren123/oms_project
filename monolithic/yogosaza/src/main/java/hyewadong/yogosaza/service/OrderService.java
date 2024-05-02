@@ -4,7 +4,7 @@ package hyewadong.yogosaza.service;
 import hyewadong.yogosaza.mapper.OrderMapper;
 import hyewadong.yogosaza.dto.order.OrderInputDto;
 import hyewadong.yogosaza.dto.order.OrderOutputDto;
-import hyewadong.yogosaza.entity.OrderDomain;
+import hyewadong.yogosaza.domain.OrderDomain;
 import hyewadong.yogosaza.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

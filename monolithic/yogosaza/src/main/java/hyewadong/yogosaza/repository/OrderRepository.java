@@ -2,7 +2,7 @@ package hyewadong.yogosaza.repository;
 
 import hyewadong.yogosaza.dto.order.OrderInputDto;
 import hyewadong.yogosaza.dto.order.OrderOutputDto;
-import hyewadong.yogosaza.entity.OrderDomain;
+import hyewadong.yogosaza.domain.OrderDomain;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.sql.SQLException;

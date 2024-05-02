@@ -3,7 +3,7 @@ package hyewadong.yogosaza.repository;
 
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
-import hyewadong.yogosaza.entity.MemberDomain;
+import hyewadong.yogosaza.domain.MemberDomain;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.sql.SQLException;

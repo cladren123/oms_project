@@ -4,7 +4,7 @@ package hyewadong.yogosaza.service;
 import hyewadong.yogosaza.mapper.StockMapper;
 import hyewadong.yogosaza.dto.stock.StockInputDto;
 import hyewadong.yogosaza.dto.stock.StockOutputDto;
-import hyewadong.yogosaza.entity.StockDomain;
+import hyewadong.yogosaza.domain.StockDomain;
 import hyewadong.yogosaza.repository.StockRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

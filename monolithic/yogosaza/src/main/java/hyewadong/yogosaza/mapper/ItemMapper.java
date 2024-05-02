@@ -1,7 +1,7 @@
 package hyewadong.yogosaza.mapper;
 
 import hyewadong.yogosaza.dto.item.ItemInputDto;
-import hyewadong.yogosaza.entity.ItemDomain;
+import hyewadong.yogosaza.domain.ItemDomain;
 
 public class ItemMapper {
 

@@ -1,7 +1,7 @@
 package hyewadong.yogosaza.mapper;
 
 import hyewadong.yogosaza.dto.member.MemberInputDto;
-import hyewadong.yogosaza.entity.MemberDomain;
+import hyewadong.yogosaza.domain.MemberDomain;
 
 public class MemberMapper {
 

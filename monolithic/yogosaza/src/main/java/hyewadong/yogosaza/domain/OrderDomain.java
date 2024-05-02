@@ -1,4 +1,4 @@
-package hyewadong.yogosaza.entity;
+package hyewadong.yogosaza.domain;
 
 
 import lombok.Builder;

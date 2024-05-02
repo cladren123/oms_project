@@ -4,7 +4,7 @@ package hyewadong.yogosaza.service;
 import hyewadong.yogosaza.mapper.MemberMapper;
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
-import hyewadong.yogosaza.entity.MemberDomain;
+import hyewadong.yogosaza.domain.MemberDomain;
 import hyewadong.yogosaza.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

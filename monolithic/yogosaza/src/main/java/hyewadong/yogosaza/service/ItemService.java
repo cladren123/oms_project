@@ -3,7 +3,7 @@ package hyewadong.yogosaza.service;
 import hyewadong.yogosaza.mapper.ItemMapper;
 import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
-import hyewadong.yogosaza.entity.ItemDomain;
+import hyewadong.yogosaza.domain.ItemDomain;
 import hyewadong.yogosaza.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
