@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class ItemEntity {
+public class ItemDomain {
 
     private Integer itemSeq;
     private Integer brandSeq;

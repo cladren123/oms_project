@@ -1,12 +1,12 @@
 package hyewadong.yogosaza.converter;
 
 import hyewadong.yogosaza.dto.item.ItemInputDto;
-import hyewadong.yogosaza.entity.ItemEntity;
+import hyewadong.yogosaza.entity.ItemDomain;
 
 public class ItemConverter {
 
-    public static ItemEntity itemInputDtoToItemEntity(ItemInputDto itemInputDto) {
-        return ItemEntity.builder()
+    public static ItemDomain itemInputDtoToItemDomain(ItemInputDto itemInputDto) {
+        return ItemDomain.builder()
                 .itemSeq(itemInputDto.getItemSeq())
                 .brandSeq(itemInputDto.getBrandSeq())
                 .categoryId(itemInputDto.getCategoryId())

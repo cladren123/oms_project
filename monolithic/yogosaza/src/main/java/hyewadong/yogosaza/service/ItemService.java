@@ -3,7 +3,7 @@ package hyewadong.yogosaza.service;
 import hyewadong.yogosaza.converter.ItemConverter;
 import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
-import hyewadong.yogosaza.entity.ItemEntity;
+import hyewadong.yogosaza.entity.ItemDomain;
 import hyewadong.yogosaza.mapper.ItemMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,12 +21,9 @@ public class ItemService {
 
     // 상품 등록
     public int registerItem(ItemInputDto itemInputDto) throws SQLException {
-        ItemEntity itemEntity = ItemConverter.itemInputDtoToItemEntity(itemInputDto);
-
-        System.out.println(itemEntity.toString());
-
-        itemEntity.makeDate();
-        return itemMapper.registerItem(itemEntity);
+        ItemDomain itemDomain = ItemConverter.itemInputDtoToItemDomain(itemInputDto);
+        itemDomain.makeDate();
+        return itemMapper.registerItem(itemDomain);
     }
 
     // 상품 조회

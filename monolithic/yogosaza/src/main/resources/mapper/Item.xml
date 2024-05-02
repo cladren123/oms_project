@@ -5,7 +5,7 @@
 <mapper namespace="hyewadong.yogosaza.mapper.ItemMapper">
 
     <!-- 상품 등록 -->
-    <insert id="registerItem" parameterType="ItemEntity">
+    <insert id="registerItem" parameterType="ItemDomain">
         insert into item(brand_seq, category_id, item_code, item_name, item_price, item_color, item_size, item_create_date)
         values(#{brandSeq}, #{categoryId}, #{itemCode}, #{itemName}, #{itemPrice}, #{itemColor}, #{itemSize}, #{itemCreateDate})
     </insert>

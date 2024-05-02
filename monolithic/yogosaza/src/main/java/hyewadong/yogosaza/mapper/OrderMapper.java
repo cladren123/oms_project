@@ -3,7 +3,7 @@ package hyewadong.yogosaza.mapper;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
 import hyewadong.yogosaza.dto.order.OrderInputDto;
 import hyewadong.yogosaza.dto.order.OrderOutputDto;
-import hyewadong.yogosaza.entity.ItemEntity;
+import hyewadong.yogosaza.entity.ItemDomain;
 import hyewadong.yogosaza.entity.OrderEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.w3c.dom.stylesheets.LinkStyle;
