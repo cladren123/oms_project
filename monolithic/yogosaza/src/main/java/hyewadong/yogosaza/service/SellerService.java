@@ -4,7 +4,7 @@ package hyewadong.yogosaza.service;
 import hyewadong.yogosaza.converter.SellerConverter;
 import hyewadong.yogosaza.dto.seller.SellerInputDto;
 import hyewadong.yogosaza.dto.seller.SellerOutputDto;
-import hyewadong.yogosaza.entity.SellerEntity;
+import hyewadong.yogosaza.entity.SellerDomain;
 import hyewadong.yogosaza.mapper.SellerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,10 +22,9 @@ public class SellerService {
 
     // 판매자 가입
     public int registerSeller(SellerInputDto sellerInputDto) throws SQLException {
-        System.out.println(sellerInputDto.toString());
-        SellerEntity sellerEntity = SellerConverter.sellerInputDtoToSellerEntity(sellerInputDto);
-        sellerEntity.makeDate();
-        return sellerMapper.registerSeller(sellerEntity);
+        SellerDomain sellerDomain = SellerConverter.sellerInputDtoToSellerEntity(sellerInputDto);
+        sellerDomain.makeDate();
+        return sellerMapper.registerSeller(sellerDomain);
     }
 
     // 판매자 상세 조회

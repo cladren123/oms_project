@@ -1,12 +1,12 @@
 package hyewadong.yogosaza.converter;
 
 import hyewadong.yogosaza.dto.seller.SellerInputDto;
-import hyewadong.yogosaza.entity.SellerEntity;
+import hyewadong.yogosaza.entity.SellerDomain;
 
 public class SellerConverter {
 
-    public static SellerEntity sellerInputDtoToSellerEntity(SellerInputDto sellerInputDto) {
-        return SellerEntity.builder()
+    public static SellerDomain sellerInputDtoToSellerEntity(SellerInputDto sellerInputDto) {
+        return SellerDomain.builder()
                 .brandSeq(sellerInputDto.getBrandSeq())
                 .sellerId(sellerInputDto.getSellerId())
                 .sellerPwd(sellerInputDto.getSellerPwd())

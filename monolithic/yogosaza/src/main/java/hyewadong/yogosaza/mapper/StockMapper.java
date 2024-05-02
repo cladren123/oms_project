@@ -4,7 +4,6 @@ import hyewadong.yogosaza.dto.seller.SellerInputDto;
 import hyewadong.yogosaza.dto.seller.SellerOutputDto;
 import hyewadong.yogosaza.dto.stock.StockInputDto;
 import hyewadong.yogosaza.dto.stock.StockOutputDto;
-import hyewadong.yogosaza.entity.SellerEntity;
 import hyewadong.yogosaza.entity.StockEntity;
 import org.apache.ibatis.annotations.Mapper;
 

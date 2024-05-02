@@ -6,7 +6,7 @@
 <mapper namespace="hyewadong.yogosaza.mapper.SellerMapper">
 
     <!-- 판매자 가입 -->
-    <insert id="registerSeller" parameterType="SellerEntity">
+    <insert id="registerSeller" parameterType="SellerDomain">
         insert into seller(brand_seq, seller_id, seller_pwd, seller_name, seller_phone, seller_address, seller_create_date)
         values(#{brandSeq}, #{sellerId}, #{sellerPwd}, #{sellerName}, #{sellerPhone}, #{sellerAddress}, #{sellerCreateDate})
     </insert>
