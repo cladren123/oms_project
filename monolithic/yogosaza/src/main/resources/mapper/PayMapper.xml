@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 완전한 패키지 경로를 포함하는 것이 권장된다. 이름 충돌 방지, 프로젝트 내의 sql문의 위치를 명확하게 한다. -->
+<mapper namespace="hyewadong.yogosaza.mapper.PayMapper">
+
+    <!-- 결제 등록 -->
+    <insert id="registerPay" parameterType="PayDomain">
+        insert into pay(order_seq, pay_type, pay_card_no, pay_price, pay_create_date)
+        values(#{orderSeq}, #{payType}, #{payCardNo}, #{payPrice}, #{payCreateDate})
+    </insert>
+
+
+    <!-- 결제 조회  -->
+    <select id="getPay" parameterType="int" resultType="PayOutputDto">
+        select pay_seq, order_seq, pay_type, pay_card_no, pay_price, pay_create_date
+        from pay
+        where pay_seq = #{paySeq}
+    </select>
+
+
+    <!-- 결제 전체 조회 -->
+    <select id="getPays" resultType="PayOutputDto">
+        select  pay_seq, order_seq, pay_type, pay_card_no, pay_price, pay_create_date
+        from pay
+    </select>
+
+
+    <!-- 결제 수정  -->
+    <update id="updatePay" parameterType="PayDomain">
+        update pay
+        <trim prefix="set" suffixOverrides=",">
+            <if test="orderSeq != null">order_seq = #{orderSeq},</if>
+            <if test="payType != null">pay_type = #{payType},</if>
+            <if test="payCardNo != null">pay_card_no = #{payCardNo},</if>
+            <if test="payPrice != null">pay_price = #{payPrice},</if>
+            <if test="payCreateDate != null">pay_create_date = #{payCreateDate},</if>
+        </trim>
+        where pay_seq = #{paySeq}
+    </update>
+
+
+</mapper>
