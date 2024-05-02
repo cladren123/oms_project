@@ -5,7 +5,7 @@ import hyewadong.yogosaza.converter.OrderConverter;
 import hyewadong.yogosaza.dto.order.OrderInputDto;
 import hyewadong.yogosaza.dto.order.OrderOutputDto;
 import hyewadong.yogosaza.entity.OrderDomain;
-import hyewadong.yogosaza.mapper.OrderRepository;
+import hyewadong.yogosaza.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

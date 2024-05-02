@@ -5,7 +5,7 @@ import hyewadong.yogosaza.converter.MemberConverter;
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.entity.MemberDomain;
-import hyewadong.yogosaza.mapper.MemberRepository;
+import hyewadong.yogosaza.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -5,7 +5,7 @@ import hyewadong.yogosaza.converter.StockConverter;
 import hyewadong.yogosaza.dto.stock.StockInputDto;
 import hyewadong.yogosaza.dto.stock.StockOutputDto;
 import hyewadong.yogosaza.entity.StockDomain;
-import hyewadong.yogosaza.mapper.StockRepository;
+import hyewadong.yogosaza.repository.StockRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

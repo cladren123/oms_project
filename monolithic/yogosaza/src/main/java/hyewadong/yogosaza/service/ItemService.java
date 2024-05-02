@@ -4,7 +4,7 @@ import hyewadong.yogosaza.converter.ItemConverter;
 import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
 import hyewadong.yogosaza.entity.ItemDomain;
-import hyewadong.yogosaza.mapper.ItemRepository;
+import hyewadong.yogosaza.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

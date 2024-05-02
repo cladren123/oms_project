@@ -1,4 +1,4 @@
-package hyewadong.yogosaza.mapper;
+package hyewadong.yogosaza.repository;
 
 import hyewadong.yogosaza.dto.stock.StockInputDto;
 import hyewadong.yogosaza.dto.stock.StockOutputDto;

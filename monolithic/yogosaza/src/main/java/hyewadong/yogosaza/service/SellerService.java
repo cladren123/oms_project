@@ -5,7 +5,7 @@ import hyewadong.yogosaza.converter.SellerConverter;
 import hyewadong.yogosaza.dto.seller.SellerInputDto;
 import hyewadong.yogosaza.dto.seller.SellerOutputDto;
 import hyewadong.yogosaza.entity.SellerDomain;
-import hyewadong.yogosaza.mapper.SellerRepository;
+import hyewadong.yogosaza.repository.SellerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
