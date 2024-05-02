@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 완전한 패키지 경로를 포함하는 것이 권장된다. 이름 충돌 방지, 프로젝트 내의 sql문의 위치를 명확하게 한다. -->
+<mapper namespace="hyewadong.yogosaza.mapper.StockHistoryMapper">
+
+    <!-- 재고 내역 등록 -->
+    <insert id="registerStockHistory" parameterType="StockHistoryDomain">
+        insert into stock_history(item_seq, stock_history_change_qty, stock_history_create_date)
+        values(#{itemSeq}, #{stockHistoryChangeQty}, #{stockHistoryCreateDate})
+    </insert>
+
+
+    <!-- 재고 내역 상세 조회  -->
+    <select id="getStockHistory" parameterType="int" resultType="StockHistoryOutputDto">
+        select stock_history_seq, item_seq, stock_history_change_qty, stock_history_create_date
+        from stock_history
+        where stock_history_seq = #{stockHistorySeq}
+    </select>
+
+
+    <!-- 재고 내역 전부 조회  -->
+    <select id="getStockHistories" resultType="StockHistoryOutputDto">
+        select stock_history_seq, item_seq, stock_history_change_qty, stock_history_create_date
+        from stock_history
+    </select>
+
+    <!-- 상품별 재고 내역 전부 조회  -->
+    <select id="getStockHistoriesByItemSeq" resultType="StockHistoryOutputDto">
+        select stock_history_seq, item_seq, stock_history_change_qty, stock_history_create_date
+        from stock_history
+        where item_seq = #{itemSeq}
+    </select>
+
+
+    <!-- 재고 내역 변경  -->
+    <update id="updateStockHistory" parameterType="StockHistoryDomain">
+        update stock_history
+        <trim prefix="set" suffixOverrides=",">
+            <if test="itemSeq != null">item_seq = #{itemSeq},</if>
+            <if test="stockHistoryChangeQty != null">stock_history_change_qty = #{stockHistoryChangeQty},</if>
+            <if test="stockHistoryCreateDate != null">stock_history_create_date = #{stockHistoryCreateDate},</if>
+        </trim>
+        where stock_history_seq = #{stockHistorySeq}
+    </update>
+
+
+    <!-- 재고 내역 삭제 -->
+    <delete id="deleteStockHistory" parameterType="int">
+        delete from stock_history
+        where stock_history_seq = #{stockHistorySeq}
+    </delete>
+
+</mapper>

@@ -95,7 +95,7 @@ CREATE TABLE `stock` (
 CREATE TABLE `stock_history` (
     `stock_history_seq` BIGINT	NOT NULL AUTO_INCREMENT,
     `item_seq` BIGINT	NOT NULL,
-    `stock_change_qty`	BIGINT	NOT NULL,
-	 `stock_create_date`	DATETIME,
+    `stock_history_change_qty`	BIGINT	NOT NULL,
+	`stock_history_create_date`	DATETIME,
     primary key(`stock_history_seq`)
 )
