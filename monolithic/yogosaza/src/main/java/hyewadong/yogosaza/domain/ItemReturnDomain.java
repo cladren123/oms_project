@@ -8,17 +8,17 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class Return {
+public class ItemReturnDomain {
 
-    private Integer returnSeq;
+    private Integer itemReturnSeq;
     private Integer memberSeq;
     private Integer orderSeq;
     private String itemCode;
-    private Integer returnQty;
-    private LocalDateTime returnCreateDate;
+    private Integer itemReturnQty;
+    private LocalDateTime itemReturnCreateDate;
 
     public void makeDate() {
-        returnCreateDate = LocalDateTime.now();
+        itemReturnCreateDate = LocalDateTime.now();
     }
 
 }

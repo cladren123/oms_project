@@ -65,14 +65,14 @@ CREATE TABLE `item` (
     primary key(`item_seq`)
 )
 
-CREATE TABLE `return` (
-    `return_seq` BIGINT	NOT NULL AUTO_INCREMENT,
+CREATE TABLE `item_return` (
+    `item_return_seq` BIGINT	NOT NULL AUTO_INCREMENT,
     `member_seq` BIGINT	NOT NULL,
     `order_seq` BIGINT	NOT NULL,
     `item_code`	VARCHAR(20) NOT NULL ,
-    `return_qty`	BIGINT	NOT NULL,
-    `return_create_date`	DATETIME,
-    primary key(`return_seq`)
+    `item_return_qty`	BIGINT	NOT NULL,
+    `item_return_create_date`	DATETIME,
+    primary key(`item_return_seq`)
 )
 
 CREATE TABLE `pay` (
