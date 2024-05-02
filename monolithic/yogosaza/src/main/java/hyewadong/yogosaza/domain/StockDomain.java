@@ -13,3 +13,4 @@ public class StockDomain {
     private Integer stockQty;
 
 }
+
