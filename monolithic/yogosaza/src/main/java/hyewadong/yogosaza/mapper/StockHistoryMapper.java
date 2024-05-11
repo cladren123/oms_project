@@ -31,4 +31,9 @@ public interface StockHistoryMapper {
     public int deleteStockHistory(StockHistoryInputDto stockHistoryInputDto) throws SQLException;
 
 
+
+    // 재고 수정 시 재고 내역 저장(프로시저 사용)
+    public void updateStockFromStockHistory(StockHistoryDomain stockHistoryDomain) throws SQLException;
+
+
 }

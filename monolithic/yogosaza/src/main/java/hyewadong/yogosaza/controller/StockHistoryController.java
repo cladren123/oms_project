@@ -63,4 +63,11 @@ public class StockHistoryController {
     }
 
 
+    // 재고 수정 시 재고 내역 저장(프로시저 사용)
+    @PostMapping("/newProcedure")
+    public ResponseEntity<?> updateStockFromStockHistory(@RequestBody StockHistoryInputDto stockHistoryInputDto) throws SQLException {
+        stockHistoryService.updateStockFromStockHistory(stockHistoryInputDto);
+        return ResponseEntity.ok("ok");
+    }
+
 }

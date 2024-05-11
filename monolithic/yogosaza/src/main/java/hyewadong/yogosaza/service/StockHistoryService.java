@@ -57,6 +57,15 @@ public class StockHistoryService {
 
 
 
+    // 재고 수정 시 재고 내역 저장(프로시저 사용)
+    public void updateStockFromStockHistory(StockHistoryInputDto stockHistoryInputDto) throws SQLException {
+        StockHistoryDomain stockHistoryDomain = StockHistoryConverter.stockHistoryInputDtoToStockHistoryDomain(stockHistoryInputDto);
+        stockHistoryDomain.makeDate();
+        stockHistoryMapper.updateStockFromStockHistory(stockHistoryDomain);
+    }
+
+
+
 
 
 }

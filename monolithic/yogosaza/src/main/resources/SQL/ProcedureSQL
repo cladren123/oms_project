@@ -1,0 +1,72 @@
+
+DELIMITER //
+
+CREATE PROCEDURE UpdateStockFromStockHistory(
+    IN itemSeqParam BIGINT,
+    IN changeQtyParam BIGINT,
+    IN createDateParam DATETIME
+)
+BEGIN
+    -- stock 테이블에 해당 itemSeq가 존재하지 않는 경우 예외 핸들러 설정
+    DECLARE EXIT HANDLER FOR NOT FOUND
+    BEGIN
+        -- 예외 발생 시 실행할 작업
+        ROLLBACK; -- 롤백을 수행하여 이전 상태로 되돌립니다.
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Item does not exist in stock table';
+    END;
+
+    -- 트랜잭션 시작
+    START TRANSACTION;
+
+    -- 해당 아이템의 총 재고량을 변경
+    UPDATE stock
+    SET stock_qty = stock_qty + changeQtyParam
+    WHERE item_seq = itemSeqParam;
+
+    -- 재고 내역에 값을 추가
+    INSERT INTO stock_history (item_seq, stock_history_change_qty, stock_history_create_date)
+    VALUES (itemSeqParam, changeQtyParam, createDateParam);
+
+    -- 트랜잭션 커밋
+    COMMIT;
+END//
+DELIMITER ;
+
+
+CALL UpdateStockFromStockHistory(2, 10, now());
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE UpdateStockFromStockHistory(
+    IN itemSeqParam BIGINT,
+    IN changeQtyParam BIGINT,
+    IN createDateParam DATETIME
+)
+BEGIN
+    -- stock 테이블에 해당 itemSeq가 존재하지 않는 경우 예외 핸들러 설정
+    DECLARE EXIT HANDLER FOR NOT FOUND
+    BEGIN
+        -- 예외 발생 시 실행할 작업
+        ROLLBACK; -- 롤백을 수행하여 이전 상태로 되돌립니다.
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Item does not exist in stock table';
+    END;
+
+    -- 트랜잭션 시작
+    START TRANSACTION;
+
+    -- 해당 아이템의 총 재고량을 변경
+    UPDATE stock
+    SET stock_qty = stock_qty + changeQtyParam
+    WHERE item_seq = itemSeqParam;
+
+    -- 재고 내역에 값을 추가
+    INSERT INTO stock_history (item_seq, stock_history_change_qty, stock_history_create_date)
+    VALUES (itemSeqParam, changeQtyParam, createDateParam);
+
+    -- 트랜잭션 커밋
+    COMMIT;
+END//
+DELIMITER ;

@@ -52,4 +52,10 @@
         where stock_history_seq = #{stockHistorySeq}
     </delete>
 
+
+    <!-- 재고 수정 시 재고 내역 저장(프로시저 사용) -->
+    <update id="updateStockFromStockHistory" parameterType="StockHistoryDomain">
+        {call UpdateStockFromStockHistory(#{itemSeq}, #{stockHistoryChangeQty}, #{stockHistoryCreateDate})}
+    </update>
+
 </mapper>
