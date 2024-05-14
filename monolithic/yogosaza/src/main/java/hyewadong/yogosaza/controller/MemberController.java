@@ -1,11 +1,15 @@
 package hyewadong.yogosaza.controller;
 
 
+import hyewadong.yogosaza.dto.ApiResponse;
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
+import hyewadong.yogosaza.dto.member.MemberRegisterDto;
 import hyewadong.yogosaza.service.MemberService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -20,8 +24,16 @@ public class MemberController {
 
     // 회원 등록
     @PostMapping("/new")
-    public ResponseEntity<?> registerMember(@RequestBody MemberInputDto memberInputDto) throws SQLException {
-        int result = memberService.registerMember(memberInputDto);
+    public ResponseEntity<?> registerMember(@Valid @RequestBody MemberRegisterDto memberRegisterDto,
+                                            BindingResult bindingResult) throws SQLException {
+        // 필수 입력값이 안 들어온 경우
+        if (bindingResult.hasErrors()) {
+            String errorMessage = bindingResult.getFieldError().getDefaultMessage();
+            ApiResponse apiResponse = new ApiResponse(false, errorMessage);
+            return ResponseEntity.badRequest().body(apiResponse);
+        }
+
+        int result = memberService.registerMember(memberRegisterDto);
         return ResponseEntity.ok(result);
     }
 

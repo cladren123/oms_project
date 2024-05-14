@@ -1,6 +1,7 @@
 package hyewadong.yogosaza.dto.member;
 
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 /**

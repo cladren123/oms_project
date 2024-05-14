@@ -5,7 +5,9 @@ import hyewadong.yogosaza.converter.MemberConverter;
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.domain.MemberDomain;
+import hyewadong.yogosaza.dto.member.MemberRegisterDto;
 import hyewadong.yogosaza.mapper.MemberMapper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +24,8 @@ public class MemberService {
     private final MemberMapper memberMapper;
 
     // 회원 가입
-    public int registerMember(MemberInputDto memberInputDto) throws SQLException {
-        MemberDomain memberDomain = MemberConverter.memberRegisterDtoToMemberDomain(memberInputDto);
+    public int registerMember(MemberRegisterDto memberRegisterDto) throws SQLException {
+        MemberDomain memberDomain = MemberConverter.memberRegistDtoToMemberDomain(memberRegisterDto);
         memberDomain.setMemberCreateDate(LocalDateTime.now());
         return memberMapper.registerMember(memberDomain);
     }
