@@ -10,10 +10,12 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,14 +26,14 @@ public class MemberController {
 
     // 회원 등록
     @PostMapping("/new")
-    public ResponseEntity<?> registerMember(@Valid @RequestBody MemberRegisterDto memberRegisterDto,
-                                            BindingResult bindingResult) throws SQLException {
-        // 필수 입력값이 안 들어온 경우
-        if (bindingResult.hasErrors()) {
-            String errorMessage = bindingResult.getFieldError().getDefaultMessage();
-            ApiResponse apiResponse = new ApiResponse(false, errorMessage);
-            return ResponseEntity.badRequest().body(apiResponse);
-        }
+    public ResponseEntity<?> registerMember(@Valid @RequestBody MemberRegisterDto memberRegisterDto) throws SQLException {
+
+//        if (bindingResult.hasErrors()) {
+//            List<String> errorMessages = bindingResult.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList());
+//            ApiResponse apiResponse = new ApiResponse(false, errorMessages);
+//            errorMessages.add(new String("controller"));
+//            return ResponseEntity.badRequest().body(apiResponse);
+//        }
 
         int result = memberService.registerMember(memberRegisterDto);
         return ResponseEntity.ok(result);
