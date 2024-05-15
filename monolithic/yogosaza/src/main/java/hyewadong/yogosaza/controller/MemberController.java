@@ -27,14 +27,6 @@ public class MemberController {
     // 회원 등록
     @PostMapping("/new")
     public ResponseEntity<?> registerMember(@Valid @RequestBody MemberRegisterDto memberRegisterDto) throws SQLException {
-
-//        if (bindingResult.hasErrors()) {
-//            List<String> errorMessages = bindingResult.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList());
-//            ApiResponse apiResponse = new ApiResponse(false, errorMessages);
-//            errorMessages.add(new String("controller"));
-//            return ResponseEntity.badRequest().body(apiResponse);
-//        }
-
         int result = memberService.registerMember(memberRegisterDto);
         return ResponseEntity.ok(result);
     }

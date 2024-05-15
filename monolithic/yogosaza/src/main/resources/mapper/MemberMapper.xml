@@ -11,6 +11,13 @@
         values(#{memberId}, #{memberPwd}, #{memberName}, #{memberPhone}, #{memberAddress}, #{memberCreateDate})
     </insert>
 
+    <!-- 회원 아이디 중복 확인 -->
+    <select id="existsByMemberId" resultType="boolean">
+        select count(*) > 0
+        from member
+        where member_id = #{memberId}
+    </select>
+
 
     <!-- 회원 상세 조회  -->
     <select id="getMember" parameterType="int" resultType="MemberOutputDto">

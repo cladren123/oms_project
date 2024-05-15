@@ -15,6 +15,11 @@ public interface MemberMapper {
     // 회원 가입
     public int registerMember(MemberDomain memberDomain) throws SQLException;
 
+
+    // 회원 아이디 중복 확인
+    public boolean existsByMemberId(String memberId) throws SQLException;
+
+
     // 회원 상세 조회
     public MemberOutputDto getMember(int memberSeq) throws SQLException;
 

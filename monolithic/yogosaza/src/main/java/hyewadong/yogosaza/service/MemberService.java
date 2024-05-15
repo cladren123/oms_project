@@ -6,6 +6,7 @@ import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.domain.MemberDomain;
 import hyewadong.yogosaza.dto.member.MemberRegisterDto;
+import hyewadong.yogosaza.exception.ConflictException;
 import hyewadong.yogosaza.mapper.MemberMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,12 @@ public class MemberService {
 
     // 회원 가입
     public int registerMember(MemberRegisterDto memberRegisterDto) throws SQLException {
+
+        // 아이디 중복 검사
+        if (memberMapper.existsByMemberId(memberRegisterDto.getMemberId())) {
+            throw new ConflictException("이미 등록된 아이디 입니다.");
+        }
+
         MemberDomain memberDomain = MemberConverter.memberRegistDtoToMemberDomain(memberRegisterDto);
         memberDomain.setMemberCreateDate(LocalDateTime.now());
         return memberMapper.registerMember(memberDomain);
