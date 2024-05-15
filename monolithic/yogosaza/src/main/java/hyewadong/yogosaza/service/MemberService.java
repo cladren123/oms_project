@@ -8,6 +8,8 @@ import hyewadong.yogosaza.domain.MemberDomain;
 import hyewadong.yogosaza.dto.member.MemberRegisterDto;
 import hyewadong.yogosaza.exception.ConflictException;
 import hyewadong.yogosaza.mapper.MemberMapper;
+import hyewadong.yogosaza.message.DtoMessage;
+import hyewadong.yogosaza.message.ErrorMessage;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,7 +31,7 @@ public class MemberService {
 
         // 아이디 중복 검사
         if (memberMapper.existsByMemberId(memberRegisterDto.getMemberId())) {
-            throw new ConflictException("이미 등록된 아이디 입니다.");
+            throw new ConflictException(ErrorMessage.ID_ALREADY_TAKEN.getMessage());
         }
 
         MemberDomain memberDomain = MemberConverter.memberRegistDtoToMemberDomain(memberRegisterDto);
