@@ -18,4 +18,8 @@ public class MemberDomain {
     private String memberAddress;
     private LocalDateTime memberCreateDate;
 
+    public void makeDate() {
+        this.memberCreateDate = LocalDateTime.now();
+    }
+
 }

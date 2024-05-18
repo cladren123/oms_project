@@ -12,6 +12,7 @@ import hyewadong.yogosaza.message.DtoMessage;
 import hyewadong.yogosaza.message.ErrorMessage;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.lang.annotation.Around;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +28,7 @@ public class MemberService {
     private final MemberMapper memberMapper;
 
     // 회원 가입
+    @Around("trackRegisterMemberTime()")
     public int registerMember(MemberRegisterDto memberRegisterDto) throws SQLException {
 
         // 아이디 중복 검사
@@ -35,7 +37,8 @@ public class MemberService {
         }
 
         MemberDomain memberDomain = MemberConverter.memberRegistDtoToMemberDomain(memberRegisterDto);
-        memberDomain.setMemberCreateDate(LocalDateTime.now());
+        memberDomain.makeDate();
+
         return memberMapper.registerMember(memberDomain);
     }
 
