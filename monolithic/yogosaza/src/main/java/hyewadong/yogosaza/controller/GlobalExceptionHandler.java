@@ -3,6 +3,7 @@ package hyewadong.yogosaza.controller;
 
 import hyewadong.yogosaza.dto.ApiResponse;
 import hyewadong.yogosaza.exception.ConflictException;
+import hyewadong.yogosaza.exception.InvalidCredentialsException;
 import hyewadong.yogosaza.message.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,11 +25,11 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler {
 
     // 서버 에러 처리
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiResponse> handleAllExceptions(Exception ex, WebRequest request) {
-        ApiResponse apiResponse = new ApiResponse(false, ErrorMessage.SERVER_ERROR.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiResponse);
-    }
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<ApiResponse> handleAllExceptions(Exception ex, WebRequest request) {
+//        ApiResponse apiResponse = new ApiResponse(false, ErrorMessage.SERVER_ERROR.getMessage());
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiResponse);
+//    }
 
 
     // DTO 유효성 검사 에러 처리
@@ -47,8 +48,9 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(new ApiResponse(false, ex.getMessage()));
     }
 
-
-
-
-
+    // 유효하지 않은 인증 처리
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ApiResponse> handleInvalidCredentials(InvalidCredentialsException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ApiResponse(false, ex.getMessage()));
+    }
 }

@@ -18,6 +18,12 @@
         where member_id = #{memberId}
     </select>
 
+    <!-- 로그인 : 아이디, 비밀번호 비교 -->
+    <select id="getMemberByMemberIdAndMemberPwd" parameterType="MemberLoginDto" resultType="MemberDomain">
+        select member_seq, member_id, member_pwd, member_name, member_phone, member_address, member_create_date
+        from member
+        where member_id = #{memberId} and member_pwd = #{memberPwd}
+    </select>
 
     <!-- 회원 상세 조회  -->
     <select id="getMember" parameterType="int" resultType="MemberOutputDto">

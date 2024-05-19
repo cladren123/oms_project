@@ -15,21 +15,21 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ExecutionTimeTrackerAspect {
 
-    private static final Logger logger = LoggerFactory.getLogger(ExecutionTimeTrackerAspect.class);
-
-    @Pointcut("execution(* hyewadong.yogosaza..*.*(..))")
-    public void trackTimeAnnotation() {}
-
-    @Around("trackTimeAnnotation()")
-    public Object trackTime(ProceedingJoinPoint joinPoint) throws Throwable {
-        long startTime = System.currentTimeMillis();
-        Object result = joinPoint.proceed(); // 메소드 실행
-        long endTime = System.currentTimeMillis();
-
-        long executionTime = endTime - startTime;
-        logger.info("{} executed in {} ms", joinPoint.getSignature(), executionTime);
-        return result;
-
-    }
+//    private static final Logger logger = LoggerFactory.getLogger(ExecutionTimeTrackerAspect.class);
+//
+//    @Pointcut("execution(* hyewadong.yogosaza..*.*(..))")
+//    public void trackTimeAnnotation() {}
+//
+//    @Around("trackTimeAnnotation()")
+//    public Object trackTime(ProceedingJoinPoint joinPoint) throws Throwable {
+//        long startTime = System.currentTimeMillis();
+//        Object result = joinPoint.proceed(); // 메소드 실행
+//        long endTime = System.currentTimeMillis();
+//
+//        long executionTime = endTime - startTime;
+//        logger.info("{} executed in {} ms", joinPoint.getSignature(), executionTime);
+//        return result;
+//
+//    }
 
 }

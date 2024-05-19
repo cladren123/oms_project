@@ -1,6 +1,7 @@
 package hyewadong.yogosaza.mapper;
 
 
+import hyewadong.yogosaza.dto.member.MemberLoginDto;
 import hyewadong.yogosaza.dto.member.MemberOutputDto;
 import hyewadong.yogosaza.dto.member.MemberInputDto;
 import hyewadong.yogosaza.domain.MemberDomain;
@@ -19,6 +20,8 @@ public interface MemberMapper {
     // 회원 아이디 중복 확인
     public boolean existsByMemberId(String memberId) throws SQLException;
 
+    // 로그인 : 아이디, 비밀번호 비교
+    public MemberDomain getMemberByMemberIdAndMemberPwd(MemberLoginDto memberLoginDto) throws SQLException;
 
     // 회원 상세 조회
     public MemberOutputDto getMember(int memberSeq) throws SQLException;
