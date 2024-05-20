@@ -1,7 +1,9 @@
 package hyewadong.yogosaza.service;
 
 
+import hyewadong.yogosaza.domain.ItemDomain;
 import hyewadong.yogosaza.domain.MemberDomain;
+import hyewadong.yogosaza.mapper.ItemMapper;
 import hyewadong.yogosaza.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,8 @@ import java.util.Random;
 public class TestService {
 
     private final MemberMapper memberMapper;
+    private final ItemMapper itemMapper;
+
     private final Random random = new Random();
     private final List<String> districts = Arrays.asList(
             "강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구",
@@ -49,6 +53,39 @@ public class TestService {
                     .build();
             memberDummy.makeDate();
             memberMapper.registerMember(memberDummy);
+        }
+    }
+
+    private final List<String> colors = Arrays.asList(
+            "red", "orange", "yellow", "green", "blue", "navy", "purple",
+            "khaki", "beige", "black", "white", "denim"
+    );
+
+    private final List<String> sizes = Arrays.asList(
+            "XS", "S", "M", "L", "XL", "XXL", "FREE"
+    );
+
+    // 상품 10_000개 생성
+    public void makeDummyItem() throws SQLException {
+        for (int i = 1; i <= 10_000; i++) {
+            Integer brandSeq = random.nextInt(10) + 1;
+            Integer categoryId = random.nextInt(10) + 1;
+            String itemCode = String.format("code%05d", i);
+            String itemName = String.format("itemName%05d", i);
+            Integer itemPrice = (random.nextInt(100) + 1) * 1000;
+            String itemColor = colors.get(random.nextInt(colors.size()));
+            String itemSize = sizes.get(random.nextInt(sizes.size()));
+            ItemDomain itemDomain = ItemDomain.builder()
+                    .brandSeq(brandSeq)
+                    .categoryId(categoryId)
+                    .itemCode(itemCode)
+                    .itemName(itemName)
+                    .itemPrice(itemPrice)
+                    .itemColor(itemColor)
+                    .itemSize(itemSize)
+                    .build();
+            itemDomain.makeDate();
+            itemMapper.registerItem(itemDomain);
         }
     }
 

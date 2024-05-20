@@ -34,4 +34,10 @@ public class TestController {
         return ResponseEntity.ok("ok");
     }
 
+    @PostMapping("/dummy/item")
+    public ResponseEntity<?> makeDummyItem() throws SQLException {
+        testService.makeDummyItem();
+        return ResponseEntity.ok("ok");
+    }
+
 }
