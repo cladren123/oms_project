@@ -1,5 +1,6 @@
 package hyewadong.yogosaza.mapper;
 
+import hyewadong.yogosaza.dto.item.ItemListDto;
 import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
 import hyewadong.yogosaza.domain.ItemDomain;
@@ -25,6 +26,11 @@ public interface ItemMapper {
 
     // 상품 삭제
     public int deleteItem(int itemSeq) throws SQLException;
+
+    // 상품들 조회 최신순
+    public List<ItemListDto> getItemsByLatest(int limit, int offset) throws SQLException;
+
+    
 
 
 }

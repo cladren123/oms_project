@@ -2,9 +2,8 @@ package hyewadong.yogosaza.controller;
 
 
 import hyewadong.yogosaza.dto.item.ItemInputDto;
+import hyewadong.yogosaza.dto.item.ItemListDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
-import hyewadong.yogosaza.dto.seller.SellerInputDto;
-import hyewadong.yogosaza.dto.seller.SellerOutputDto;
 import hyewadong.yogosaza.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -52,6 +51,12 @@ public class ItemController {
     @PostMapping("/delete")
     public ResponseEntity<?> deleteItem(@RequestBody ItemInputDto itemInputDto) throws SQLException {
         int result = itemService.deleteItem(itemInputDto);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/list/latest")
+    public ResponseEntity<?> getItemsByLatest(@RequestParam Integer offset) throws SQLException {
+        List<ItemListDto> result = itemService.getItemsByLatest(offset);
         return ResponseEntity.ok(result);
     }
 

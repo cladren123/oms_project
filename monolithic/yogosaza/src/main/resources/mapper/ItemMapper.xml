@@ -46,4 +46,15 @@
         where item_seq = #{itemSeq}
     </delete>
 
+
+    <!-- 상품들 조회 최신순 -->
+    <select id="getItemsByLatest" resultType="ItemListDto">
+        select i.item_seq, b.brand_name, i.item_name, i.item_price
+        from item as i
+        join brand as b
+        on i.brand_seq = b.brand_seq
+        limit #{limit}
+        offset #{offset}
+    </select>
+
 </mapper>

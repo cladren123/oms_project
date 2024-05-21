@@ -1,7 +1,9 @@
 package hyewadong.yogosaza.service;
 
+import hyewadong.yogosaza.config.PaginationConfig;
 import hyewadong.yogosaza.converter.ItemConverter;
 import hyewadong.yogosaza.dto.item.ItemInputDto;
+import hyewadong.yogosaza.dto.item.ItemListDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
 import hyewadong.yogosaza.domain.ItemDomain;
 import hyewadong.yogosaza.mapper.ItemMapper;
@@ -18,6 +20,7 @@ import java.util.List;
 public class ItemService {
 
     private final ItemMapper itemMapper;
+    private final PaginationConfig paginationConfig;
 
     // 상품 등록
     public int registerItem(ItemInputDto itemInputDto) throws SQLException {
@@ -44,6 +47,14 @@ public class ItemService {
     // 상품 삭제
     public int deleteItem(ItemInputDto itemInputDto) throws SQLException {
         return itemMapper.deleteItem(itemInputDto.getItemSeq());
+    }
+
+    // 상품들 조회 최신순
+    public List<ItemListDto> getItemsByLatest(int offset) throws SQLException {
+
+        System.out.println(paginationConfig.getPageSize());
+
+        return itemMapper.getItemsByLatest(paginationConfig.getPageSize(), offset);
     }
 
 
