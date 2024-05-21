@@ -14,5 +14,4 @@ public class PaginationConfig {
 
     private Integer pageSize;
 
-
 }
