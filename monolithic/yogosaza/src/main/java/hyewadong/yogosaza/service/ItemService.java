@@ -51,7 +51,7 @@ public class ItemService {
 
     // 상품들 조회 최신순
     public List<ItemListDto> getItemsByLatest(int offset) throws SQLException {
-        return itemMapper.getItemsByLatest(paginationConfig.getPageSize(), offset);
+        return itemMapper.getItemsByLatest(offset, offset + paginationConfig.getPageSize());
     }
 
 

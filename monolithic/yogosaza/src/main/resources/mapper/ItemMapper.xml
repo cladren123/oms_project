@@ -53,8 +53,7 @@
         from item as i
         join brand as b
         on i.brand_seq = b.brand_seq
-        limit #{limit}
-        offset #{offset}
+        where i.item_seq between #{startOffset} and #{endOffset}
     </select>
 
 </mapper>

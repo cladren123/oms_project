@@ -54,6 +54,7 @@ public class ItemController {
         return ResponseEntity.ok(result);
     }
 
+    // 상품 리스트 조회 최신순
     @GetMapping("/list/latest")
     public ResponseEntity<?> getItemsByLatest(@RequestParam Integer offset) throws SQLException {
         List<ItemListDto> result = itemService.getItemsByLatest(offset);
