@@ -60,6 +60,7 @@
         join brand as b
         on i.brand_seq = b.brand_seq
         where i.item_seq between #{startOffset} and #{endOffset}
+        order by item_seq desc
     </select>
 
 </mapper>

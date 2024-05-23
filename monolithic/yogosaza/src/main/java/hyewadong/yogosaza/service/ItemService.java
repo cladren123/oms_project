@@ -60,9 +60,10 @@ public class ItemService {
         int size = paginationConfig.getPageSize();
         int totalContents = itemMapper.countItem();
         int totalPages = (totalContents + size - 1) / size;
-        int start = (page - 1) * size;
+        int end = totalContents - (page - 1) * size;
+        int start = Math.max(end - size + 1, 0);
 
-        List<ItemListDto> contents = itemMapper.getItemsByLatest(start, start + size);
+        List<ItemListDto> contents = itemMapper.getItemsByLatest(start, end);
         return new Page<>(page, totalPages, totalContents, contents);
     }
 
