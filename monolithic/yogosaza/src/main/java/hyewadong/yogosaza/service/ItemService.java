@@ -2,6 +2,7 @@ package hyewadong.yogosaza.service;
 
 import hyewadong.yogosaza.config.PaginationConfig;
 import hyewadong.yogosaza.converter.ItemConverter;
+import hyewadong.yogosaza.dto.Page;
 import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.dto.item.ItemListDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
@@ -52,6 +53,17 @@ public class ItemService {
     // 상품들 조회 최신순
     public List<ItemListDto> getItemsByLatest(int offset) throws SQLException {
         return itemMapper.getItemsByLatest(offset, offset + paginationConfig.getPageSize());
+    }
+
+    // 상품들 조회 최신순 페이지
+    public Page<ItemListDto> getItemPageByLatest(int page) throws SQLException {
+        int size = paginationConfig.getPageSize();
+        int totalContents = itemMapper.countItem();
+        int totalPages = (totalContents + size - 1) / size;
+        int start = (page - 1) * size;
+
+        List<ItemListDto> contents = itemMapper.getItemsByLatest(start, start + size);
+        return new Page<>(page, totalPages, totalContents, contents);
     }
 
 

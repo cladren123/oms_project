@@ -46,6 +46,12 @@
         where item_seq = #{itemSeq}
     </delete>
 
+    <!-- 전체 상품 수 조회 -->
+    <select id="countItem">
+        select count(*)
+        from item
+    </select>
+
 
     <!-- 상품들 조회 최신순 -->
     <select id="getItemsByLatest" resultType="ItemListDto">

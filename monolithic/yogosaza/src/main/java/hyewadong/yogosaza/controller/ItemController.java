@@ -1,6 +1,7 @@
 package hyewadong.yogosaza.controller;
 
 
+import hyewadong.yogosaza.dto.Page;
 import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.dto.item.ItemListDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
@@ -61,5 +62,11 @@ public class ItemController {
         return ResponseEntity.ok(result);
     }
 
+    // 상품들 조회 최신순 페이지
+    @GetMapping("/page/latest")
+    public ResponseEntity<?> getItemPageByLatest(@RequestParam int page) throws SQLException {
+        Page<ItemListDto> result = itemService.getItemPageByLatest(page);
+        return ResponseEntity.ok(result);
+    }
 
 }

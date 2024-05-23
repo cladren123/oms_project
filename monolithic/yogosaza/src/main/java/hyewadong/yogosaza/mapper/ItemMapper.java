@@ -27,6 +27,10 @@ public interface ItemMapper {
     // 상품 삭제
     public int deleteItem(int itemSeq) throws SQLException;
 
+
+    // 상품 전체 개수 조회
+    public int countItem() throws SQLException;
+
     // 상품들 조회 최신순
     public List<ItemListDto> getItemsByLatest(int startOffset, int endOffset) throws SQLException;
 
