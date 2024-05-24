@@ -64,7 +64,7 @@ public class ItemController {
 
     // 상품들 조회 최신순 페이지
     @GetMapping("/page/latest")
-    public ResponseEntity<?> getItemPageByLatest(@RequestParam int page) throws SQLException {
+    public ResponseEntity<?> getItemPageByLatest(@RequestParam(required = true) int page) throws SQLException {
         Page<ItemListDto> result = itemService.getItemPageByLatest(page);
         return ResponseEntity.ok(result);
     }

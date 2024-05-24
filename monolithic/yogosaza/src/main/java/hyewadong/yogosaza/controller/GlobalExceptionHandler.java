@@ -13,6 +13,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,17 @@ public class GlobalExceptionHandler {
 //        ApiResponse apiResponse = new ApiResponse(false, ErrorMessage.SERVER_ERROR.getMessage());
 //        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiResponse);
 //    }
+
+    // 타입 에러 처리
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ApiResponse> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        String requiredType = ex.getRequiredType().getSimpleName(); // 필요한 데이터 타입
+        String value = ex.getValue() == null ? "null" : ex.getValue().toString(); // 입력된 값
+        String errorMessage = String.format("잘못된 파라미터 입력: %s는(은) %s 타입이어야 합니다. 입력된 값: %s", ex.getName(), requiredType, value);
+
+        ApiResponse apiResponse = new ApiResponse(false, errorMessage);
+        return ResponseEntity.badRequest().body(apiResponse);
+    }
 
 
     // DTO 유효성 검사 에러 처리
