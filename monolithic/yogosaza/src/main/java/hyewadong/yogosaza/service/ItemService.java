@@ -7,6 +7,7 @@ import hyewadong.yogosaza.dto.item.ItemInputDto;
 import hyewadong.yogosaza.dto.item.ItemListDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
 import hyewadong.yogosaza.domain.ItemDomain;
+import hyewadong.yogosaza.exception.PageOutOfRangeException;
 import hyewadong.yogosaza.mapper.ItemMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -60,6 +61,12 @@ public class ItemService {
         int size = paginationConfig.getPageSize();
         int totalContents = itemMapper.countItem();
         int totalPages = (totalContents + size - 1) / size;
+
+        // 범위 밖 페이지를 입력했을 때 예외 발생
+        if (page < 1 || page > totalPages) {
+            throw new PageOutOfRangeException(page, totalPages);
+        }
+
         int end = totalContents - (page - 1) * size;
         int start = Math.max(end - size + 1, 0);
 

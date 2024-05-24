@@ -4,6 +4,7 @@ package hyewadong.yogosaza.controller;
 import hyewadong.yogosaza.dto.ApiResponse;
 import hyewadong.yogosaza.exception.ConflictException;
 import hyewadong.yogosaza.exception.InvalidCredentialsException;
+import hyewadong.yogosaza.exception.PageOutOfRangeException;
 import hyewadong.yogosaza.message.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,5 +65,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidCredentialsException.class)
     public ResponseEntity<ApiResponse> handleInvalidCredentials(InvalidCredentialsException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(new ApiResponse(false, ex.getMessage()));
+    }
+
+    // 유효 페이지 범위 벗어난 예외 처리
+    @ExceptionHandler(PageOutOfRangeException.class)
+    public ResponseEntity<ApiResponse> handlePageOutOfRange(PageOutOfRangeException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse(false, ex.getMessage()));
     }
 }
