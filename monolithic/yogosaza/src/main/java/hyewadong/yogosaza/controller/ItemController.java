@@ -77,4 +77,11 @@ public class ItemController {
         return ResponseEntity.ok(result);
     }
 
+    // 상품들 조회 높은 금액순 페이지
+    @GetMapping("/page/highPrice")
+    public ResponseEntity<?> getItemsPageByHighPrice(@RequestParam(required = true) int page) throws SQLException {
+        Page<ItemListDto> result = itemService.getItemPageByHighPrice(page);
+        return ResponseEntity.ok(result);
+    }
+
 }

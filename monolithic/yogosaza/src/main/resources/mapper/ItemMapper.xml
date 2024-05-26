@@ -74,6 +74,14 @@
         where row_num between #{start} and #{end}
     </select>
 
+    <!-- 상품들 조회 높은 금액순  -->
+    <select id="getItemsByHighPrice" resultType="ItemListDto">
+        select item_seq, brand_name, item_name, item_price
+        from sorted_item_by_price
+        where row_num between #{start} and #{end}
+        order by row_num desc
+    </select>
+
 
 
 </mapper>

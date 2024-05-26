@@ -93,6 +93,25 @@ public class ItemService {
     }
 
 
+    // 상품들 조회 높은 금액순 페이지
+    public Page<ItemListDto> getItemPageByHighPrice(int page) throws SQLException {
+        int size = paginationConfig.getPageSize(); // 크기
+        int totalContents = itemMapper.countItem(); // 총 아이템 수
+        int totalPages = (totalContents + size - 1) / size; // 총 페이지 수
+
+        // 범위 밖 페이지를 입력했을 때 예외 발생
+        if (page < 1 || page > totalPages) {
+            throw new PageOutOfRangeException(page, totalPages);
+        }
+
+        int end = totalContents - (page - 1) * size;
+        int start = Math.max(end - size + 1, 0);
+
+        List<ItemListDto> contents = itemMapper.getItemsByHighPrice(start, end);
+        return new Page<>(page, totalPages, totalContents, contents);
+    }
+
+
 
 
 

@@ -36,7 +36,8 @@ public interface ItemMapper {
 
     // 상품들 조회 낮은 금액순
     public List<ItemListDto> getItemsByLowPrice(int start, int end) throws SQLException;
-    
 
+    // 상품들 조회 높은 금액순
+    public List<ItemListDto> getItemsByHighPrice(int start, int end) throws SQLException;
 
 }
