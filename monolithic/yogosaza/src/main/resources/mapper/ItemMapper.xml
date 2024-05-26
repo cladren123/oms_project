@@ -56,11 +56,24 @@
     <!-- 상품들 조회 최신순 -->
     <select id="getItemsByLatest" resultType="ItemListDto">
         select i.item_seq, b.brand_name, i.item_name, i.item_price
-        from item as i
+        from
+        (select item_seq, brand_seq, item_name, item_price
+        from item
+        where item_seq between #{startOffset} and #{endOffset})
+        as i
         join brand as b
         on i.brand_seq = b.brand_seq
-        where i.item_seq between #{startOffset} and #{endOffset}
-        order by item_seq desc
+        order by i.item_seq desc
     </select>
+
+
+    <!-- 상품들 조회 낮은 금액순  -->
+    <select id="getItemsByLowPrice" resultType="ItemListDto">
+        select item_seq, brand_name, item_name, item_price
+        from sorted_item_by_price
+        where row_num between #{start} and #{end}
+    </select>
+
+
 
 </mapper>

@@ -7,6 +7,7 @@ import hyewadong.yogosaza.dto.item.ItemListDto;
 import hyewadong.yogosaza.dto.item.ItemOutputDto;
 import hyewadong.yogosaza.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,6 +67,13 @@ public class ItemController {
     @GetMapping("/page/latest")
     public ResponseEntity<?> getItemPageByLatest(@RequestParam(required = true) int page) throws SQLException {
         Page<ItemListDto> result = itemService.getItemPageByLatest(page);
+        return ResponseEntity.ok(result);
+    }
+
+    // 상품들 조회 낮은 금액순 페이지
+    @GetMapping("/page/lowPrice")
+    public ResponseEntity<?> getItemsPageByLowPrice(@RequestParam(required = true) int page) throws SQLException {
+        Page<ItemListDto> result = itemService.getItemPageByLowPrice(page);
         return ResponseEntity.ok(result);
     }
 

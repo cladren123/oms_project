@@ -74,6 +74,24 @@ public class ItemService {
         return new Page<>(page, totalPages, totalContents, contents);
     }
 
+    // 상품들 조회 낮은 금액순 페이지
+    public Page<ItemListDto> getItemPageByLowPrice(int page) throws SQLException {
+        int size = paginationConfig.getPageSize(); // 크기
+        int totalContents = itemMapper.countItem(); // 총 아이템 수
+        int totalPages = (totalContents + size - 1) / size; // 총 페이지 수
+
+        // 범위 밖 페이지를 입력했을 때 예외 발생
+        if (page < 1 || page > totalPages) {
+            throw new PageOutOfRangeException(page, totalPages);
+        }
+
+        int start = page * size + 1;
+        int end = start + size - 1;
+
+        List<ItemListDto> contents = itemMapper.getItemsByLowPrice(start, end);
+        return new Page<>(page, totalPages, totalContents, contents);
+    }
+
 
 
 
