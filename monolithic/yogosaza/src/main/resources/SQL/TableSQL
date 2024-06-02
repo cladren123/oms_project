@@ -67,7 +67,7 @@ CREATE TABLE `item` (
 )
 create index idx_item_price on item(item_price)
 
-view 생성
+# 금액 순서로 정렬한 view
 create view sorted_item_by_price as
 select
 	row_number() over (order by i.item_price, i.item_seq) as row_num,
@@ -94,6 +94,7 @@ CREATE TABLE `item_return` (
     primary key(`item_return_seq`)
 )
 
+
 CREATE TABLE `pay` (
     `pay_seq` BIGINT	NOT NULL AUTO_INCREMENT,
     `order_seq` BIGINT	NOT NULL,
@@ -103,6 +104,7 @@ CREATE TABLE `pay` (
     `pay_create_date`	DATETIME,
     primary key(`pay_seq`)
 )
+
 
 CREATE TABLE `stock` (
     `stock_seq` BIGINT	NOT NULL AUTO_INCREMENT,
